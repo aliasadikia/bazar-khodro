@@ -1,0 +1,6 @@
+{
+  "name": "بازار خودرو",
+  "description": "سامانه جامع خرید و فروش خودرو Auto Max با کارشناسی تخصصی، ثبت آگهی و قیمت‌گذاری آنلاین",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
