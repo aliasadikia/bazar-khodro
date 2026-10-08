@@ -1,5 +1,5 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+  <img src="./logo.svg" alt="Bazar Khodro Logo" width="600" />
 </div>
 
 # Run and deploy your AI Studio app
@@ -11,7 +11,6 @@ View your app in AI Studio: https://ai.studio/apps/ffcaf59c-70a2-4bc5-a24d-f82eb
 ## Run Locally
 
 **Prerequisites:**  Node.js
-
 
 1. Install dependencies:
    `npm install`
