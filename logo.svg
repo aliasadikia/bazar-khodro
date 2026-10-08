@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Bazar Khodro Logo</title>
+  <desc id="desc">Stylized car silhouette in orange and dark blue.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M116 408 C 160 310, 240 240, 398 218 C 520 200, 680 206, 794 267 C 845 296, 912 314, 1012 319 C 1048 321, 1084 335, 1107 366 L 1098 398 C 1091 429, 1080 455, 1034 473 C 998 486, 953 496, 910 502 L 780 517 C 680 528, 582 531, 500 528 L 370 524 C 282 521, 211 513, 176 496 C 141 479, 119 452, 116 408 Z"
+      fill="#ffffff"
+      stroke="#f28c28"
+      stroke-width="26"/>
+
+    <path d="M232 397 C 292 320, 373 280, 518 278 C 659 274, 780 312, 883 355 C 921 372, 980 375, 1036 376 L 1009 424 C 954 435, 918 448, 839 459 L 720 474 C 604 487, 489 491, 377 483 L 310 477 C 263 472, 226 448, 232 397 Z"
+      fill="#ffffff"
+      stroke="#0d3b73"
+      stroke-width="24"/>
+
+    <path d="M505 270 C 563 241, 637 219, 710 220 C 781 221, 846 252, 893 298"
+      stroke="#0d3b73"
+      stroke-width="22"/>
+
+    <path d="M149 397 C 208 347, 258 327, 347 318"
+      stroke="#f28c28"
+      stroke-width="22"/>
+
+    <path d="M890 346 C 948 342, 995 355, 1034 381"
+      stroke="#f28c28"
+      stroke-width="18"/>
+
+    <path d="M775 466 L 883 454 C 914 451, 945 454, 980 467"
+      stroke="#0d3b73"
+      stroke-width="18"/>
+
+    <path d="M232 402 C 190 420, 166 421, 121 422"
+      stroke="#f28c28"
+      stroke-width="18"/>
+
+    <path d="M405 514 C 434 490, 474 474, 520 473 C 586 472, 659 502, 701 513"
+      stroke="#f28c28"
+      stroke-width="18"/>
+
+    <path d="M549 494 C 606 477, 715 472, 826 487"
+      stroke="#0d3b73"
+      stroke-width="16"/>
+
+    <g stroke="#0d3b73" stroke-width="18" fill="none">
+      <circle cx="322" cy="514" r="88"/>
+      <circle cx="902" cy="514" r="88"/>
+      <circle cx="322" cy="514" r="34" stroke="#f8fafc"/>
+      <circle cx="902" cy="514" r="34" stroke="#f8fafc"/>
+    </g>
+
+    <g fill="#ffffff" stroke="#0d3b73" stroke-width="18">
+      <path d="M328 514 m -58 0 a 58 58 0 1 1 116 0 a 58 58 0 1 1 -116 0"/>
+      <path d="M908 514 m -58 0 a 58 58 0 1 1 116 0 a 58 58 0 1 1 -116 0"/>
+    </g>
+  </g>
+</svg>
