@@ -16,7 +16,7 @@ const cars = [
     mileage: '۲۴,۰۰۰ کیلومتر',
     transmission: 'اتوماتیک',
     fuel: 'بنزین',
-    location: 'تهhran',
+    location: 'تهران',
     image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80',
     badge: 'تخصصی',
     status: 'در انبار',
@@ -63,37 +63,16 @@ const cars = [
 ];
 
 const pricing = [
-  {
-    title: 'برنزی',
-    description: 'برای آگهی‌های ساده و شروع سریع',
-    price: '۱,۲۵۰,۰۰۰',
-    popular: false,
-    features: ['ثبت آگهی تا ۳۰ روز', 'نمایش در لیست اصلی', 'پشتیبانی پیامکی'],
-    button: 'انتخاب برنزی',
-  },
-  {
-    title: 'نقره‌ای',
-    description: 'مناسب برای فروش سریع‌تر با دید بیشتر',
-    price: '۲,۹۹۰,۰۰۰',
-    popular: true,
-    features: ['ثبت آگهی نامحدود', 'اولویت نمایش بیشتر', 'تضمین تماس مشتری', 'پشتیبانی حرفه‌ای'],
-    button: 'انتخاب نقره‌ای',
-  },
-  {
-    title: 'طلایی',
-    description: 'پکیج کامل برای فروش حرفه‌ای خودرو',
-    price: '۵,۹۹۰,۰۰۰',
-    popular: false,
-    features: ['مدیر آگهی اختصاصی', 'برندینگ حرفه‌ای', 'بازاریابی هدفمند', 'پشتیبانی ۲۴ ساعته'],
-    button: 'انتخاب طلایی',
-  },
+  { title: 'برنزی', description: 'برای آگهی ساده و شروع سریع', price: '۱,۲۵۰,۰۰۰', popular: false, features: ['ثبت آگهی ۳۰ روزه', 'نمایش در لیست اصلی', 'پشتیبانی پیامکی'], button: 'انتخاب برنزی' },
+  { title: 'نقره‌ای', description: 'مناسب برای فروش سریع‌تر', price: '۲,۹۹۰,۰۰۰', popular: true, features: ['ثبت آگهی نامحدود', 'اولویت نمایش', 'تضمین تماس مشتری', 'پشتیبانی حرفه‌ای'], button: 'انتخاب نقره‌ای' },
+  { title: 'طلایی', description: 'پکیج حرفه‌ای و کامل', price: '۵,۹۹۰,۰۰۰', popular: false, features: ['مدیر آگهی اختصاصی', 'برندینگ حرفه‌ای', 'بازاریابی هدفمند', 'پشتیبانی ۲۴ ساعته'], button: 'انتخاب طلایی' },
 ];
 
 const advantages = [
-  { title: 'دقت قیمت‌گذاری', text: 'قیمت‌ها با تحلیل بازار و شرایط خودرو به‌روز می‌شوند.' },
-  { title: 'معاملات امن', text: 'فرآیند ثبت آگهی و بررسی خودرو با پشتیبانی حرفه‌ای انجام می‌شود.' },
-  { title: 'تأیید هویت فروشنده', text: 'برای افزایش اعتماد و کاهش ریسک معامله، هویت ارسال می‌شود.' },
-  { title: 'دسترسی سریع', text: 'جستجو، فیلتر و تماس با فروشنده در کمترین زمان ممکن.' },
+  { title: 'دقت قیمت‌گذاری', text: 'قیمت‌ها بر اساس بازار و شرایط خودرو به‌روزرسانی می‌شوند.' },
+  { title: 'معاملات امن', text: 'پرداخت، اسناد و معرفی فروشنده با سیستم‌های استاندارد انجام می‌شود.' },
+  { title: 'تأیید هویت', text: 'برای افزایش اعتماد معامله، هویت فروشنده و خودرو بررسی می‌شود.' },
+  { title: 'دسترسی سریع', text: 'جستجو، فیلتر و تماس با فروشنده در کوتاه‌ترین زمان ممکن.' },
 ];
 
 export default function App() {
@@ -101,7 +80,7 @@ export default function App() {
     <div className="page-shell">
       <header className="site-header">
         <div className="container header-inner">
-          <a href="#" className="brand" aria-label="بازار خودرو">
+          <a href="#top" className="brand" aria-label="بازار خودرو">
             <span className="brand-mark">B</span>
             <div>
               <strong>بازار خودرو</strong>
@@ -133,8 +112,7 @@ export default function App() {
                 بازار خودرو <span>Auto Max</span>
               </h1>
               <p>
-                خرید، فروش و ثبت آگهی تخصصی خودرو با پکیج‌های معتبر، قیمت‌گذاری دقیق و
-                تجربه‌ای امن از اولین تماس تا تحویل نهایی.
+                خرید، فروش و ثبت آگهی تخصصی خودرو با پکیج‌های معتبر، قیمت‌گذاری دقیق و تجربی امن از اولین تماس تا تحویل نهایی.
               </p>
 
               <form className="search-box" aria-label="جستجوی خودرو">
@@ -148,6 +126,7 @@ export default function App() {
                       <option value="kia">کیا</option>
                     </select>
                   </label>
+
                   <label>
                     <span>نوع خودرو</span>
                     <select defaultValue="all">
@@ -157,6 +136,7 @@ export default function App() {
                       <option value="pickup">پیکاپ</option>
                     </select>
                   </label>
+
                   <label>
                     <span>قیمت</span>
                     <select defaultValue="all">
@@ -166,9 +146,8 @@ export default function App() {
                       <option value="high">بیشتر از ۱.۵ میلیارد</option>
                     </select>
                   </label>
-                  <button type="submit" className="btn btn-primary search-btn">
-                    جستجو
-                  </button>
+
+                  <button type="submit" className="btn btn-primary search-btn">جستجو</button>
                 </div>
               </form>
             </div>
@@ -197,7 +176,7 @@ export default function App() {
 
           <div className="type-grid">
             {bodyTypes.map((type) => (
-              <article key={type.name} className="type-card">
+              <article className="type-card" key={type.name}>
                 <div className="type-icon" aria-hidden="true">🚗</div>
                 <h3>{type.name}</h3>
                 <span>{type.count} خودرو</span>
