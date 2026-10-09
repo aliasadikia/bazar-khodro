@@ -1,50 +1,66 @@
 const express = require('express');
 const cors = require('cors');
+const fetch = require('node-fetch'); // اگر با خطا مواجه شدید، این کتابخانه را نصب کنید
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-const MERCHANT = process.env.ZIBAL_MERCHANT; // در Render تنظیم می‌کنیم
-const CALLBACK_URL = process.env.CALLBACK_URL; // آدرس بازگشت به سایت
+// استفاده از متغیر محیطی که در رندر ست کردید
+const MERCHANT = process.env.ZIBAL_MERCHANT;
+const PORT = process.env.PORT || 3000;
 
-// مرحله ۱: درخواست پرداخت
-app.post('/api/request', async (req, res) => {
-  try {
-    const { amount, description, mobile } = req.body;
-    const r = await fetch('https://gateway.zibal.ir/v1/request', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        merchant: MERCHANT,
-        amount: amount, // به تومان
-        description: description || 'پرداخت',
-        callbackUrl: CALLBACK_URL,
-        mobile: mobile || undefined
-      })
-    });
-    const data = await r.json();
-    res.json(data);
-  } catch (e) {
-    res.status(500).json({ error: 'request failed' });
-  }
+app.post('/request', async (req, res) => {
+    try {
+        const { amount, description, mobile } = req.body;
+        
+        // نکته مهم: زیبال مبلغ را به ریال می‌خواهد (مبلغ * 10)
+        const amountInRials = amount * 10;
+
+        console.log("درخواست پرداخت جدید:", { amountInRials, MERCHANT });
+
+        const response = await fetch('https://gateway.zibal.ir/v1/request', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                merchant: MERCHANT,
+                amount: amountInRials,
+                callbackUrl: "https://mashin-online.ir/callback",
+                description: description || "پرداخت آگهی",
+                mobile: mobile
+            })
+        });
+
+        const data = await response.json();
+        console.log("پاسخ زیبال:", data);
+        res.json(data);
+
+    } catch (error) {
+        console.error("خطای سیستمی درگاه:", error);
+        res.status(500).json({ message: "خطای داخلی سرور: " + error.message });
+    }
 });
 
-// مرحله ۲: تأیید پرداخت
 app.post('/api/verify', async (req, res) => {
-  try {
-    const { trackId } = req.body;
-    const r = await fetch('https://gateway.zibal.ir/v1/verify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ merchant: MERCHANT, trackId })
-    });
-    const data = await r.json();
-    res.json(data);
-  } catch (e) {
-    res.status(500).json({ error: 'verify failed' });
-  }
+    try {
+        const { trackId } = req.body;
+        const response = await fetch('https://gateway.zibal.ir/v1/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                merchant: MERCHANT,
+                trackId: trackId
+            })
+        });
+
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        console.error("خطای تایید پرداخت:", error);
+        res.status(500).json({ message: error.message });
+    }
 });
 
-app.listen(process.env.PORT || 3000, () => console.log('Server is running'));
-
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
