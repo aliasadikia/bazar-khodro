@@ -13,6 +13,7 @@
   --navy: #0b1e3d;
   --navy-strong: #061224;
   --gold: #d4af37;
+  --gold-soft: #f5dc85;
   --white: #ffffff;
   --muted: #64748b;
   --border: #e2e8f0;
@@ -89,7 +90,7 @@ select {
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--gold), #f4d96c);
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft));
   color: var(--navy-strong);
   font-size: 1.2rem;
   font-weight: 900;
