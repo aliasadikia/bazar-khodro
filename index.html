@@ -2400,16 +2400,22 @@ let selectedPackagePrice = 1250000;
       }
     }
 
-    function selectPackage(name, price) {
-      selectedPackageName = name;
-      selectedPackagePrice = price;
-      document.getElementById('selected-pkg-name').innerText = name;
-      document.getElementById('selected-pkg-price').innerText = price + ' تومان';
+  function selectPackage(name, price) {
+  selectedPackageName = name;
+  selectedPackagePrice = typeof price === 'number' ? price : parseInt(String(price).replace(/[^\d]/g, '')) || 1250000;
+  
+  if (document.getElementById('selected-pkg-name')) {
+    document.getElementById('selected-pkg-name').innerText = name;
+  }
+  if (document.getElementById('selected-pkg-price')) {
+    document.getElementById('selected-pkg-price').innerText = Number(selectedPackagePrice).toLocaleString('fa-IR') + ' تومان';
+  }
 
-      navigateTo('post-ad');
-      goToStep(4);
-      showToast(`پکیج ${name} به مبلغ ${price} تومان انتخاب شد.`);
-    }
+  navigateTo('post-ad');
+  goToStep(4);
+  showToast(`پکیج ${name} انتخاب شد.`);
+}
+ 
 
 async function submitAdAndPay() {
   const brand = document.getElementById('ad-brand').value;
