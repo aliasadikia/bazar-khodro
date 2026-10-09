@@ -2415,8 +2415,7 @@ let selectedPackagePrice = 1250000;
   goToStep(4);
   showToast(`پکیج ${name} انتخاب شد.`);
 }
- 
-async function submitAdAndPay() {
+ async function submitAdAndPay() {
   const brand = document.getElementById('ad-brand')?.value || '';
   const model = document.getElementById('ad-model')?.value || '';
   const phone = document.getElementById('ad-phone')?.value || '';
@@ -2426,18 +2425,27 @@ async function submitAdAndPay() {
     return;
   }
 
-  showToast('در حال انتقال به درگاه شاپرک...');
+  // پیام هشدار خاموش/روشن کردن وی‌پی‌ان
+  const userConfirm = confirm(
+    "⚠️ توجه مهم برای اتصال به درگاه بانکی:\n\n" +
+    "لطفاً فیلترشکن (VPN) خود را خاموش و روشن کنید تا درگاه متصل شود.\n\n" +
+    "آیا فیلترشکن خاموش است و مایل به ورود به درگاه هستید؟"
+  );
 
-  // استخراج عدد خالص قیمت
+  if (!userConfirm) {
+    return; // در صورت زدن لغو، متوقف می‌شود تا کاربر وی‌پی‌ان را قطع کند
+  }
+
+  showToast('در حال اتصال به درگاه شاپرک...');
+
   const rawPrice = typeof selectedPackagePrice === 'number'
     ? selectedPackagePrice
     : parseInt(String(selectedPackagePrice).replace(/[^\d]/g, '')) || 1250000;
 
   try {
-    // اصلاح مسیر اندپوینت به api/request
     const response = await fetch('https://bazarkhodro-payment.onrender.com/api/request', {
       method: 'POST',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
@@ -2449,24 +2457,20 @@ async function submitAdAndPay() {
     });
 
     const data = await response.json();
-    console.log("پاسخ سرور:", data);
 
-    // بررسی انواع حالت‌های خروجی موفق درگاه زیبال
     if (data.result === 100 || data.result === 201 || data.trackId) {
       const trackId = data.trackId;
       window.location.href = `https://gateway.zibal.ir/start/${trackId}`;
     } else if (data.url || data.paymentUrl) {
       window.location.href = data.url || data.paymentUrl;
     } else {
-      alert("خطا در ایجاد درگاه: " + (data.message || "کد خطا: " + data.result));
-      console.error("جزئیات خطا:", data);
+      alert("خطا در ایجاد درگاه: " + (data.message || "کد: " + data.result) + "\n(لطفاً فیلترشکن را خاموش و روشن کنید)");
     }
   } catch (error) {
-    console.error("خطای کامل:", error);
-    alert("خطای اتصال به سرور پرداخت. اگر سرور تازه روشن شده، ۳۰ ثانیه دیگر مجدد تلاش کنید.");
+    console.error("خطای درگاه:", error);
+    alert("⚠️ خطا در اتصال به درگاه بانکی!\nلطفاً فیلترشکن (VPN) را خاموش و روشن کنید تا درگاه کار کند و دوباره امتحان فرمایید.");
   }
 }
-
 
     function sendContactMessage() {
       alert('پیام شما با موفقیت به واحد پشتیبانی بازار خودرو Auto Max ارسال شد. در اسرع وقت پاسخ داده خواهد شد.');
