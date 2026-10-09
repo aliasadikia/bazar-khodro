@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: bazarkhodro-payment
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ZIBAL_MERCHANT
+        sync: false
+      - key: CALLBACK_URL
+        value: https://mashin-online.ir
