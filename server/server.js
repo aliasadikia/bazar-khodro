@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const fetch = require('node-fetch'); // اگر با خطا مواجه شدید، این کتابخانه را نصب کنید
+const fetch = require('node-fetch');
 const app = express();
 
 app.use(cors());
@@ -10,7 +10,8 @@ app.use(express.json());
 const MERCHANT = process.env.ZIBAL_MERCHANT;
 const PORT = process.env.PORT || 3000;
 
-app.post('/request', async (req, res) => {
+// مسیر درخواست پرداخت (اصلاح شد به api/request/)
+app.post('/api/request', async (req, res) => {
     try {
         const { amount, description, mobile } = req.body;
         
@@ -41,6 +42,7 @@ app.post('/request', async (req, res) => {
     }
 });
 
+// مسیر تایید پرداخت
 app.post('/api/verify', async (req, res) => {
     try {
         const { trackId } = req.body;
