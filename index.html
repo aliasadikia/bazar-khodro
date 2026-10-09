@@ -2418,9 +2418,9 @@ let selectedPackagePrice = 1250000;
  
 
 async function submitAdAndPay() {
-  const brand = document.getElementById('ad-brand').value;
-  const model = document.getElementById('ad-model').value;
-  const phone = document.getElementById('ad-phone').value;
+  const brand = document.getElementById('ad-brand')?.value || '';
+  const model = document.getElementById('ad-model')?.value || '';
+  const phone = document.getElementById('ad-phone')?.value || '';
 
   if (!phone) {
     alert('لطفاً شماره همراه خود را جهت ثبت نهایی آگهی وارد فرمایید.');
@@ -2430,31 +2430,30 @@ async function submitAdAndPay() {
   showToast('در حال انتقال به درگاه شاپرک...');
 
   try {
-    const response = await fetch('https://bazarkhodro-payment.onrender.com/api/request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            amount: Number(selectedPackagePrice), // دیگر * 10 نکنید!
-            description: 'خرید پکیج ' + selectedPackageName,
-            mobile: phone
-        })
+    const response = await fetch('https://bazarkhodro-payment.onrender.com/api/payment/request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: Number(selectedPackagePrice) || 1250000,
+        description: 'خرید ' + selectedPackageName + ' برای ' + brand + ' ' + model,
+        mobile: phone
+      })
     });
 
     const data = await response.json();
 
-    // بررسی اینکه آیا پاسخ موفقیت‌آمیز بوده و لینک درگاه وجود دارد
-    if (data.status === 1) {
-        // این خط حیاتی است: باز کردن درگاه پرداخت
-        window.location.href = data.url; 
+    if (data.status === 1 || data.trackId || data.paymentUrl || data.url) {
+      const redirectUrl = data.paymentUrl || data.url || `https://gateway.zibal.ir/start/${data.trackId}`;
+      window.location.href = redirectUrl;
     } else {
-        alert("خطا در ایجاد درگاه: " + (data.message || "اطلاعات نامعتبر"));
-        console.error("پاسخ سرور:", data);
+      alert("خطا در ایجاد درگاه: " + (data.message || "اطلاعات نامعتبر"));
+      console.error("پاسخ سرور:", data);
     }
-} catch (error) {
+  } catch (error) {
     alert("خطای اتصال به سرور پرداخت. لطفا دوباره تلاش کنید.");
     console.error("Error:", error);
+  }
 }
-
 
     function sendContactMessage() {
       alert('پیام شما با موفقیت به واحد پشتیبانی بازار خودرو Auto Max ارسال شد. در اسرع وقت پاسخ داده خواهد شد.');
