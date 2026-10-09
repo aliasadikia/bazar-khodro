@@ -10,15 +10,23 @@ app.use(express.json());
 const MERCHANT = process.env.ZIBAL_MERCHANT;
 const PORT = process.env.PORT || 3000;
 
-// مسیر درخواست پرداخت (اصلاح شد به api/request/)
+// مسیر درخواست پرداخت
 app.post('/api/request', async (req, res) => {
     try {
         const { amount, description, mobile } = req.body;
         
-        // نکته مهم: زیبال مبلغ را به ریال می‌خواهد (مبلغ * 10)
-        const amountInRials = amount * 10;
+        // استخراج عدد خالص از ورودی (حذف فاصله‌ها و حروف در صورت وجود)
+        let parsedAmount = parseInt(String(amount || '').replace(/[^0-9]/g, ''), 10);
 
-        console.log("درخواست پرداخت جدید:", { amountInRials, MERCHANT });
+        // اگر مبلغ نامعتبر بود یا کمتر از ۱۰۰۰ تومان بود، پیش‌فرض ۵۰۰۰ تومان (۵۰,۰۰۰ ریال) در نظر بگیرد
+        if (!parsedAmount || parsedAmount < 100) {
+            parsedAmount = 5000; // ۵ هزار تومان
+        }
+
+        // زیبال مبلغ را به ریال می‌خواهد (تومان ضربدر ۱۰)
+        const amountInRials = parsedAmount * 10;
+
+        console.log("درخواست پرداخت جدید:", { parsedAmount, amountInRials, MERCHANT });
 
         const response = await fetch('https://gateway.zibal.ir/v1/request', {
             method: 'POST',
@@ -27,8 +35,8 @@ app.post('/api/request', async (req, res) => {
                 merchant: MERCHANT,
                 amount: amountInRials,
                 callbackUrl: "https://mashin-online.ir/callback",
-                description: description || "پرداخت آگهی",
-                mobile: mobile
+                description: description || "پرداخت ثبت آگهی در ماشین آنلاین",
+                mobile: mobile || ""
             })
         });
 
