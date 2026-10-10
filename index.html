@@ -3,483 +3,453 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ماشین آنلاین | مرجع خرید و فروش خودرو ایرانی و گرجستان</title>
-  <meta name="description" content="سامانه هوشمند معاملات و ثبت آگهی خودروهای ایرانی و گرجی با احراز هویت و پرداخت امن">
+  <title>بازار خودرو Auto Max | خرید و فروش امن خودرو در ایران و گرجستان</title>
+  <meta name="description" content="بازار خودرو Auto Max با تمرکز بر فروش خودرو صفر و کارکرده، ثبت آگهی تخصصی، قیمت‌گذاری دقیق و تایید هویت فروشنده، تجربه‌ای امن و سریع فراهم می‌کند.">
   <link rel="canonical" href="https://mashin-online.ir/">
   <link rel="icon" href="/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0F172A;
+      --secondary: #1E293B;
       --accent: #D4AF37;
-      --accent-hover: #B89628;
+      --accent-hover: #b5952f;
       --bg: #F8FAFC;
       --card-bg: #FFFFFF;
-      --text: #1E293B;
+      --text: #0F172A;
       --muted: #64748B;
       --border: #E2E8F0;
-      --danger: #EF4444;
       --success: #10B981;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-
-    /* هدر سایت */
-    header {
-      background: var(--primary);
-      color: white;
-      padding: 16px 0;
-      border-bottom: 3px solid var(--accent);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo-area { display: flex; align-items: center; gap: 10px; font-size: 1.4rem; font-weight: 900; }
-    .logo-badge { background: var(--accent); color: var(--primary); padding: 2px 8px; border-radius: 6px; font-size: 0.8rem; }
-    .nav-actions { display: flex; gap: 12px; align-items: center; }
-    .btn {
-      padding: 9px 18px;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
+    body { font-family: 'Vazirmatn', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    
+    /* Header */
+    header { background: var(--primary); color: white; padding: 18px 0; border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 100; }
+    .header-content { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 900; color: white; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .header-actions { display: flex; gap: 12px; }
+    .btn { padding: 9px 18px; border-radius: 8px; font-weight: 700; font-family: inherit; font-size: 0.9rem; cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: 0.2s; }
     .btn-gold { background: var(--accent); color: var(--primary); }
     .btn-gold:hover { background: var(--accent-hover); }
     .btn-outline { background: transparent; border: 1px solid var(--border); color: white; }
     .btn-outline:hover { background: rgba(255,255,255,0.1); }
 
-    /* بنر اعلان */
-    .hero-notice {
-      background: #FFFBEB;
-      border: 1px solid #FDE68A;
-      color: #92400E;
-      border-radius: 10px;
-      padding: 14px;
-      margin: 20px 0;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
+    /* Hero */
+    .hero { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 60px 0 40px; text-align: center; }
+    .hero h1 { font-size: 2.2rem; font-weight: 900; margin-bottom: 16px; }
+    .hero p { max-width: 780px; margin: 0 auto 24px; color: #94A3B8; font-size: 1.1rem; }
+    .hero-features { display: flex; justify-content: center; gap: 24px; font-weight: 600; font-size: 0.95rem; margin-top: 15px; color: var(--accent); }
 
-    /* باکس فیلترها */
-    .filter-box {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-    }
-    .filter-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 16px; color: var(--primary); }
-    .filter-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
+    /* Stats */
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: -30px auto 40px; }
+    .stat-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .stat-number { font-size: 1.8rem; font-weight: 900; color: var(--primary); }
+    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+    /* Filter Section */
+    .filter-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+    .filter-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
     .filter-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
-    .filter-group input, .filter-group select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: inherit;
-      background: #FAFAFA;
-    }
+    .filter-group input, .filter-group select { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; }
 
-    /* کارت‌های خودرو */
-    .section-title { font-size: 1.3rem; font-weight: 800; margin: 30px 0 15px; color: var(--primary); }
-    .cars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    .car-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .car-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
-    .car-img {
-      width: 100%;
-      height: 180px;
-      background: #CBD5E1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #64748B;
-      font-weight: 700;
-    }
-    .car-body { padding: 16px; }
-    .car-name { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+    /* Cars Grid */
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin: 40px 0 20px; }
+    .section-header h2 { font-size: 1.5rem; font-weight: 900; }
+    .cars-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-bottom: 50px; }
+    .car-card { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .car-card:hover { transform: translateY(-4px); }
+    .car-image { height: 180px; background: #E2E8F0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; color: var(--muted); }
+    .car-details { padding: 16px; }
+    .car-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
     .car-meta { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--muted); margin-bottom: 12px; }
-    .car-price { font-size: 1.15rem; font-weight: 900; color: var(--accent-hover); }
+    .car-price { font-size: 1.2rem; font-weight: 900; color: var(--accent-hover); }
 
-    /* تعرفه پکیج‌ها */
-    .packages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 24px;
-      margin-bottom: 50px;
-    }
-    .pkg-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-    .pkg-card.vip { border: 2px solid var(--accent); background: #FFFDF9; }
-    .pkg-tag {
-      position: absolute;
-      top: -12px;
-      right: 50%;
-      transform: translateX(50%);
-      background: var(--accent);
-      color: var(--primary);
-      padding: 2px 14px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 800;
-    }
-    .pkg-name { font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
-    .pkg-price { font-size: 1.8rem; font-weight: 900; margin-bottom: 20px; color: var(--primary); }
-    .pkg-price span { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
-    .pkg-features { list-style: none; margin-bottom: 24px; flex: 1; text-align: right; }
-    .pkg-features li { margin-bottom: 10px; font-size: 0.9rem; }
-    .pkg-features li::before { content: "✓ "; color: var(--accent); font-weight: 900; }
+    /* Pricing Plans */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
+    .price-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 32px 24px; text-align: center; position: relative; display: flex; flex-direction: column; }
+    .price-card.featured { border: 2px solid var(--accent); background: #FFFDF8; transform: scale(1.02); }
+    .badge-top { position: absolute; top: -14px; right: 50%; transform: translateX(50%); background: var(--accent); color: var(--primary); padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; }
+    .plan-name { font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; }
+    .plan-price { font-size: 2rem; font-weight: 900; color: var(--primary); margin-bottom: 20px; }
+    .plan-price span { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+    .plan-list { list-style: none; margin-bottom: 28px; flex: 1; text-align: right; }
+    .plan-list li { margin-bottom: 10px; font-size: 0.9rem; }
+    .plan-list li::before { content: "✓ "; color: var(--accent); font-weight: bold; }
 
-    /* مودال لاگین و احراز هویت */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      backdrop-filter: blur(4px);
-    }
-    .modal-box {
-      background: white;
-      border-radius: 16px;
-      width: 100%;
-      max-width: 400px;
-      padding: 26px;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      left: 16px;
-      top: 16px;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .input-field {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 1rem;
-      margin: 14px 0;
-      text-align: center;
-    }
+    /* Form Wizard */
+    .wizard-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 36px; margin-bottom: 60px; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 20px; }
+    .form-grid input, .form-grid select, .form-grid textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; }
 
-    footer {
-      background: var(--primary);
-      color: #94A3B8;
-      text-align: center;
-      padding: 30px 0;
-      margin-top: 60px;
-      font-size: 0.9rem;
-    }
+    /* FAQ */
+    .faq-grid { display: grid; gap: 16px; margin-bottom: 60px; }
+    .faq-item { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .faq-item h4 { font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+    .faq-item p { font-size: 0.95rem; color: var(--muted); }
+
+    /* Auth Modal */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 999; backdrop-filter: blur(4px); }
+    .modal-content { background: white; border-radius: 14px; width: 100%; max-width: 420px; padding: 28px; position: relative; }
+    .modal-close { position: absolute; left: 16px; top: 16px; background: none; border: none; font-size: 1.4rem; cursor: pointer; }
+
+    footer { background: var(--primary); color: #94A3B8; text-align: center; padding: 30px 0; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
-  <!-- هدر -->
   <header>
-    <div class="container nav-wrapper">
-      <div class="logo-area">
-        ماشین آنلاین
-        <span class="logo-badge">ایران و گرجستان</span>
-      </div>
-      <div class="nav-actions">
-        <button id="authBtn" class="btn btn-outline" onclick="openAuthModal()">ورود / احراز هویت</button>
-        <a href="#packages" class="btn btn-gold">ثبت آگهی خودرو</a>
+    <div class="container header-content">
+      <a href="/" class="logo">بازار خودرو <span>Auto Max</span></a>
+      <div class="header-actions">
+        <button id="authBtn" class="btn btn-outline" onclick="openAuth()">ورود / احراز هویت</button>
+        <a href="#wizard" class="btn btn-gold">ثبت آگهی تخصصی</a>
       </div>
     </div>
   </header>
 
+  <section class="hero">
+    <div class="container">
+      <h1>خرید و فروش خودرو امن و حرفه‌ای در ایران و گرجستان</h1>
+      <p>بازار خودرو با تمرکز بر فروش خودروهای صفر و کارکرده، قیمت‌گذاری هوشمند روز و مشاوره رسمی حقوقی، محیطی معتبر برای خریداران و فروشندگان واقعی فراهم ساخته است.</p>
+      <div class="hero-features">
+        <span>✓ تایید هویت فروشنده</span>
+        <span>✓ قیمت‌گذاری شفاف</span>
+        <span>✓ پرداخت امن شتابی</span>
+      </div>
+    </div>
+  </section>
+
   <div class="container">
-    <div class="hero-notice">
-      ⛔️ بدون هیچ پکیج رایگان — کلیه آگهی‌ها پس از احراز هویت پیامکی و پرداخت از طریق درگاه امن شتاب منتشر می‌شوند.
+    <!-- آمار و ارقام -->
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-number">۱۲۰۰+</div>
+        <div class="stat-label">آگهی فعال کارشناسی شده</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">۴.۸/۵</div>
+        <div class="stat-label">رضایت خریداران و فروشندگان</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">۲۴/۷</div>
+        <div class="stat-label">پشتیبانی و مشاوره آنلاین</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">۹۸۵M</div>
+        <div class="stat-label">میانگین قیمت روز بازار</div>
+      </div>
     </div>
 
-    <!-- بخش فیلترها و جستجو -->
-    <section class="filter-box">
-      <h2 class="filter-title">🔍 فیلتر و جستجوی پیشرفته خودرو</h2>
+    <!-- فیلتر و جستجوی خودروها -->
+    <div class="filter-card">
+      <h3 class="filter-title">🔍 جستجوی پیشرفته و فیلتر دقیق</h3>
       <div class="filter-grid">
         <div class="filter-group">
-          <label>جستجو بر اساس نام یا مدل</label>
-          <input type="text" id="searchInput" placeholder="مثال: پژو 207، پراید، تویوتا..." oninput="applyFilters()">
+          <label>برند و مدل</label>
+          <input type="text" id="filterKeyword" placeholder="مثال: پژو 207، کرولا، پراید..." oninput="filterCars()">
         </div>
         <div class="filter-group">
-          <label>منطقه خودرو</label>
-          <select id="originFilter" onchange="applyFilters()">
-            <option value="all">همه خودروها</option>
-            <option value="iran">خودروهای ایرانی (داخلی)</option>
-            <option value="georgia">خودروهای گرجستان / وارداتی</option>
+          <label>منطقه و پلاک</label>
+          <select id="filterOrigin" onchange="filterCars()">
+            <option value="all">همه مناطق (ایران و گرجستان)</option>
+            <option value="iran">پلاک ملی (ایران)</option>
+            <option value="georgia">گرجستان / گذرموقت</option>
           </select>
         </div>
         <div class="filter-group">
-          <label>حداکثر بودجه (میلیون تومان)</label>
-          <input type="number" id="maxPriceInput" placeholder="مثال: 800" oninput="applyFilters()">
+          <label>حداکثر قیمت (تومان)</label>
+          <input type="number" id="filterPrice" placeholder="مثال: 900000000" oninput="filterCars()">
+        </div>
+        <div class="filter-group">
+          <label>حداکثر کارکرد (کیلومتر)</label>
+          <input type="number" id="filterMileage" placeholder="مثال: 60000" oninput="filterCars()">
         </div>
       </div>
-    </section>
-
-    <!-- لیست آگهی‌های خودرو -->
-    <h2 class="section-title">🚗 جدیدترین آگهی‌های کارشناسی شده</h2>
-    <div class="cars-grid" id="carsContainer">
-      <!-- توسط جاوااسکریپت پر می‌شود -->
     </div>
 
-    <!-- بخش پکیج‌های ثبت آگهی -->
-    <h2 class="section-title" id="packages">💎 پکیج‌های تخصصی ثبت آگهی و فروش</h2>
-    <div class="packages-grid">
+    <!-- خودروهای موجود -->
+    <div class="section-header">
+      <h2>خودروهای کارشناسی شده و آماده معامله</h2>
+    </div>
+    <div class="cars-grid" id="carsContainer"></div>
+
+    <!-- پکیج‌های ثبت آگهی -->
+    <div class="section-header">
+      <h2>پکیج‌های تخصصی ثبت آگهی و فروش</h2>
+    </div>
+    <div class="pricing-grid">
       <!-- برنزی -->
-      <div class="pkg-card">
-        <h3 class="pkg-name">پکیج برنزی</h3>
-        <div class="pkg-price">۱,۲۵۰,۰۰۰ <span>تومان</span></div>
-        <ul class="pkg-features">
-          <li>نمایش ۳۰ روزه در کل سایت</li>
-          <li>امکان آپلود ۵ تصویر باکیفیت</li>
-          <li>بررسی و احراز مدارک اولیه</li>
-          <li>پشتیبانی آنلاین ۷ روز هفته</li>
+      <div class="price-card">
+        <h3 class="plan-name">🥉 پکیج برنزی</h3>
+        <div class="plan-price">۱,۲۵۰,۰۰۰ <span>تومان</span></div>
+        <ul class="plan-list">
+          <li>ثبت آگهی ۳۰ روزه استاندارد</li>
+          <li>تایید و احراز هویت اولیه فروشنده</li>
+          <li>امکان بارگذاری ۵ عکس واقعی</li>
+          <li>پشتیبانی آنلاین ۲۴ ساعته</li>
         </ul>
-        <button class="btn btn-gold" onclick="startPayment('bronze', 1250000)">انتخاب و پرداخت با زیبال</button>
+        <button class="btn btn-gold" onclick="payPackage('bronze', 1250000)">انتخاب و پرداخت با زیبال</button>
       </div>
 
       <!-- نقره‌ای -->
-      <div class="pkg-card vip">
-        <div class="pkg-tag">پیشنهادی و پرفروش</div>
-        <h3 class="pkg-name">پکیج نقره‌ای ویژه</h3>
-        <div class="pkg-price">۲,۴۵۰,۰۰۰ <span>تومان</span></div>
-        <ul class="pkg-features">
-          <li>نمایش ۴۵ روزه با تگ رسمی تایید شده</li>
-          <li>۲ بار نردبان خودکار در صدر آگهی‌ها</li>
-          <li>ارسال پیامک آگهی به خریداران فعال</li>
-          <li>پشتیبانی تلفنی و مشاور اختصاصی</li>
+      <div class="price-card featured">
+        <div class="badge-top">پیشنهادی و محبوب</div>
+        <h3 class="plan-name">🥈 پکیج نقره‌ای ویژه</h3>
+        <div class="plan-price">۲,۴۵۰,۰۰۰ <span>تومان</span></div>
+        <ul class="plan-list">
+          <li>ثبت آگهی ۶۰ روزه در صدر نتایج</li>
+          <li>تایید هویت و نشان آگهی موثق</li>
+          <li>۲ بار نردبان خودکار در هفته</li>
+          <li>اطلاع‌رسانی پیامکی به خریداران فعال</li>
         </ul>
-        <button class="btn btn-gold" onclick="startPayment('silver', 2450000)">انتخاب و پرداخت با زیبال</button>
+        <button class="btn btn-gold" onclick="payPackage('silver', 2450000)">انتخاب و پرداخت با زیبال</button>
       </div>
 
       <!-- طلایی -->
-      <div class="pkg-card">
-        <h3 class="pkg-name">پکیج طلایی VIP</h3>
-        <div class="pkg-price">۳,۹۰۰,۰۰۰ <span>تومان</span></div>
-        <ul class="pkg-features">
-          <li>قرارگیری در اسلایدر ویترین صفحه اول</li>
-          <li>نردبان روزانه و انتشار در شبکه‌های اجتماعی</li>
-          <li>کارشناسی فنی و بدنه تخصصی خودرو</li>
-          <li>تنظیم مبایعه‌نامه رسمی با نظارت وکیل</li>
+      <div class="price-card">
+        <h3 class="plan-name">🥇 پکیج طلایی VIP</h3>
+        <div class="plan-price">۳,۹۰۰,۰۰۰ <span>تومان</span></div>
+        <ul class="plan-list">
+          <li>ثبت آگهی ۹۰ روزه در ویترین اول</li>
+          <li>کارشناسی تخصصی فنی و حقوقی</li>
+          <li>تنظیم مبایعه‌نامه معتبر توسط مشاور</li>
+          <li>تبلیغات اختصاصی شبکه‌های اجتماعی</li>
         </ul>
-        <button class="btn btn-gold" onclick="startPayment('gold', 3900000)">انتخاب و پرداخت با زیبال</button>
+        <button class="btn btn-gold" onclick="payPackage('gold', 3900000)">انتخاب و پرداخت با زیبال</button>
+      </div>
+    </div>
+
+    <!-- فرم مرحله‌ای ثبت آگهی -->
+    <div class="wizard-card" id="wizard">
+      <h3 style="font-size: 1.4rem; font-weight: 900; margin-bottom: 8px;">ثبت آگهی خودرو در سامانه</h3>
+      <p style="color: var(--muted); font-size: 0.9rem;">اطلاعات خودروی خود را جهت انتشار در سامانه وارد نمایید:</p>
+      
+      <form class="form-grid" onsubmit="handleAdSubmit(event)">
+        <div>
+          <label>برند و مدل</label>
+          <input type="text" id="adBrand" placeholder="مثال: پژو 207i پانوراما" required>
+        </div>
+        <div>
+          <label>سال تولید</label>
+          <input type="number" id="adYear" placeholder="مثال: 1402" required>
+        </div>
+        <div>
+          <label>کارکرد (کیلومتر)</label>
+          <input type="number" id="adMileage" placeholder="مثال: 25000" required>
+        </div>
+        <div>
+          <label>قیمت پیشنهادی (تومان)</label>
+          <input type="number" id="adPrice" placeholder="مثال: 850000000" required>
+        </div>
+        <div>
+          <label>منطقه خودرو</label>
+          <select id="adOrigin">
+            <option value="iran">پلاک ملی ایران</option>
+            <option value="georgia">گرجستان / گذرموقت</option>
+          </select>
+        </div>
+        <div>
+          <label>شماره تماس فروشنده</label>
+          <input type="tel" id="adPhone" placeholder="09xxxxxxxxx" required>
+        </div>
+        <div style="grid-column: 1 / -1;">
+          <label>توضیحات تکمیلی (رنگ، بدنه، بیمه)</label>
+          <textarea rows="3" id="adDesc" placeholder="توضیحات دقیق وضعیت شاسی، رنگ‌شدگی، لاستیک و..."></textarea>
+        </div>
+        <div style="grid-column: 1 / -1;">
+          <button type="submit" class="btn btn-gold" style="width: 100%; max-width: 250px; margin: 0 auto; display: block;">تایید و مرحله پرداخت</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- سوالات متداول -->
+    <div class="section-header">
+      <h2>پرسش‌های متداول شما</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>ثبت آگهی در بازار خودرو چقدر زمان می‌برد؟</h4>
+        <p>پس از احراز هویت پیامکی و انتخاب پکیج، آگهی توسط کارشناسان بررسی شده و در کمتر از ۲ ساعت بر روی سایت منتشر می‌شود.</p>
+      </div>
+      <div class="faq-item">
+        <h4>چرا ثبت آگهی رایگان وجود ندارد؟</h4>
+        <p>برای حفظ امنیت، جلوگیری از دلالان نامعتبر و اطمینان از اصالت معاملات، کلیه آگهی‌ها نیازمند احراز هویت و پرداخت حق عضویت رسمی هستند.</p>
+      </div>
+      <div class="faq-item">
+        <h4>آیا پرداخت از طریق کلیه کارت‌های بانکی ممکن است؟</h4>
+        <p>بله، درگاه رسمی شاپرک (زیبال) از کلیه کارت‌های عضو شتاب پشتیبانی می‌کند.</p>
       </div>
     </div>
   </div>
 
-  <!-- مودال احراز هویت با پیامک (OTP) -->
+  <!-- مودال احراز هویت -->
   <div class="modal-overlay" id="authModal">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeAuthModal()">✕</button>
-      <div id="stepPhone">
-        <h3 style="margin-bottom: 8px;">ورود / ثبت‌نام با شماره موبایل</h3>
-        <p style="font-size: 0.85rem; color: var(--muted);">برای امنیت معاملات، تایید شماره همراه الزامی است.</p>
-        <input type="tel" id="userPhone" class="input-field" placeholder="09xxxxxxxxx" maxlength="11">
-        <button class="btn btn-gold" style="width: 100%;" onclick="sendOtpCode()">ارسال کد تایید پیامکی</button>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeAuth()">✕</button>
+      <div id="authPhoneStep">
+        <h3 style="margin-bottom: 8px;">احراز هویت فروشنده</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 15px;">جهت امنیت سامانه، شماره موبایل خود را وارد فرمایید:</p>
+        <input type="tel" id="loginPhone" placeholder="09xxxxxxxxx" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; text-align: center; margin-bottom: 15px;">
+        <button class="btn btn-gold" style="width: 100%;" onclick="sendOtp()">دریافت کد تایید ۵ رقمی</button>
       </div>
-      <div id="stepCode" style="display: none;">
-        <h3 style="margin-bottom: 8px;">کد تایید را وارد کنید</h3>
-        <p style="font-size: 0.85rem; color: var(--muted);">کد ۵ رقمی ارسال شده به شماره خود را وارد نمایید:</p>
-        <input type="text" id="otpCode" class="input-field" placeholder="کد ۵ رقمی" maxlength="5">
-        <button class="btn btn-gold" style="width: 100%;" onclick="verifyOtpCode()">تایید و ورود به حساب</button>
+      <div id="authCodeStep" style="display: none;">
+        <h3 style="margin-bottom: 8px;">کد تایید پیامکی</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 15px;">کد ارسال شده به موبایل را وارد نمایید:</p>
+        <input type="text" id="loginCode" placeholder="کد ۵ رقمی" maxlength="5" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; text-align: center; margin-bottom: 15px;">
+        <button class="btn btn-gold" style="width: 100%;" onclick="verifyOtp()">تایید و ورود به سیستم</button>
       </div>
     </div>
   </div>
 
   <footer>
     <div class="container">
-      <p>© کلیه حقوق برای سامانه «ماشین آنلاین» محفوظ است. متصل به درگاه شاپرک و درگاه زیبال.</p>
+      <p>© کلیه حقوق مادی و معنوی برای پلتفرم «بازار خودرو Auto Max» و دامنه mashin-online.ir محفوظ است.</p>
     </div>
   </footer>
 
   <script>
-    // آدرس سرور بک‌اند شما روی رندر
-    const BACKEND_URL = "https://bazar-khodro-backend.onrender.com"; 
+    // آدرس سرور بک‌اند شما
+    const SERVER_URL = "https://bazar-khodro-backend.onrender.com";
 
-    // دیتای تستی خودروها
-    const carsData = [
-      { id: 1, name: "پژو 207 دنده‌ای سقف شیشه‌ای", origin: "iran", year: 1402, price: 820, imgText: "پژو 207" },
-      { id: 2, name: "پراید 131 SE فول", origin: "iran", year: 1398, price: 340, imgText: "پراید 131" },
-      { id: 3, name: "تویوتا کرولا وارداتی گرجستان", origin: "georgia", year: 2021, price: 2100, imgText: "تویوتا کرولا" },
-      { id: 4, name: "تیبا 2 هاچبک EX", origin: "iran", year: 1400, price: 395, imgText: "تیبا 2" }
+    const defaultCars = [
+      { id: 1, name: "پژو 207i دنده‌ای", origin: "iran", price: 820000000, mileage: 32000, year: 1402 },
+      { id: 2, name: "پراید 131 SE", origin: "iran", price: 345000000, mileage: 85000, year: 1398 },
+      { id: 3, name: "تویوتا کرولا وارداتی", origin: "georgia", price: 2150000000, mileage: 41000, year: 2021 },
+      { id: 4, name: "تیبا 2 هاچبک EX", origin: "iran", price: 395000000, mileage: 48000, year: 1400 }
     ];
 
-    let userLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    let userPhoneNumber = localStorage.getItem('userPhone') || '';
+    let isAuth = localStorage.getItem('userAuth') === 'true';
 
-    // رندر کارت‌های خودرو
     function renderCars(list) {
-      const container = document.getElementById('carsContainer');
+      const el = document.getElementById('carsContainer');
       if (list.length === 0) {
-        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--muted); padding: 40px;">خودرویی با این مشخصات یافت نشد.</div>`;
+        el.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">هیچ خودرویی با این مشخصات یافت نشد.</div>';
         return;
       }
-      container.innerHTML = list.map(car => `
+      el.innerHTML = list.map(c => `
         <div class="car-card">
-          <div class="car-img">${car.imgText}</div>
-          <div class="car-body">
-            <div class="car-name">${car.name}</div>
+          <div class="car-image">${c.name}</div>
+          <div class="car-details">
+            <div class="car-title">${c.name}</div>
             <div class="car-meta">
-              <span>مدل: ${car.year}</span>
-              <span>${car.origin === 'iran' ? 'پلاک ملی' : 'منطقه گرجستان'}</span>
+              <span>مدل ${c.year}</span>
+              <span>${c.mileage.toLocaleString('fa-IR')} کیلومتر</span>
+              <span>${c.origin === 'iran' ? 'پلاک ملی' : 'گرجستان'}</span>
             </div>
-            <div class="car-price">${car.price.toLocaleString('fa-IR')} میلیون تومان</div>
+            <div class="car-price">${(c.price / 1000000).toLocaleString('fa-IR')} میلیون تومان</div>
           </div>
         </div>
       `).join('');
     }
 
-    // فیلتر کردن هوشمند
-    function applyFilters() {
-      const search = document.getElementById('searchInput').value.trim().toLowerCase();
-      const origin = document.getElementById('originFilter').value;
-      const maxPrice = parseFloat(document.getElementById('maxPriceInput').value);
+    function filterCars() {
+      const q = document.getElementById('filterKeyword').value.toLowerCase();
+      const origin = document.getElementById('filterOrigin').value;
+      const p = parseFloat(document.getElementById('filterPrice').value);
+      const m = parseFloat(document.getElementById('filterMileage').value);
 
-      const filtered = carsData.filter(car => {
-        const matchSearch = car.name.toLowerCase().includes(search);
-        const matchOrigin = origin === 'all' || car.origin === origin;
-        const matchPrice = isNaN(maxPrice) || car.price <= maxPrice;
-        return matchSearch && matchOrigin && matchPrice;
+      const res = defaultCars.filter(c => {
+        const matchesQ = c.name.toLowerCase().includes(q);
+        const matchesOrigin = origin === 'all' || c.origin === origin;
+        const matchesPrice = isNaN(p) || c.price <= p;
+        const matchesMileage = isNaN(m) || c.mileage <= m;
+        return matchesQ && matchesOrigin && matchesPrice && matchesMileage;
       });
-
-      renderCars(filtered);
+      renderCars(res);
     }
 
-    // باز و بسته کردن مودال احراز هویت
-    function openAuthModal() {
+    function openAuth() {
       document.getElementById('authModal').style.display = 'flex';
-      document.getElementById('stepPhone').style.display = 'block';
-      document.getElementById('stepCode').style.display = 'none';
+      document.getElementById('authPhoneStep').style.display = 'block';
+      document.getElementById('authCodeStep').style.display = 'none';
     }
-    function closeAuthModal() {
+    function closeAuth() {
       document.getElementById('authModal').style.display = 'none';
     }
 
-    // مرحله ۱ ارسال پیامک
-    function sendOtpCode() {
-      const phone = document.getElementById('userPhone').value.trim();
-      if (!/^09[0-9]{9}$/.test(phone)) {
-        alert("لطفاً یک شماره موبایل معتبر ۱۱ رقمی (شروع با 09) وارد کنید.");
+    function sendOtp() {
+      const phone = document.getElementById('loginPhone').value.trim();
+      if (!/^09\d{9}$/.test(phone)) {
+        alert("لطفاً شماره موبایل ۱۱ رقمی معتبر وارد کنید.");
         return;
       }
-      userPhoneNumber = phone;
-      // شبیه‌سازی ارسال کد به شماره همراه (در محیط واقعی از بک‌اند درخواست می‌شود)
-      alert("کد تایید تستی: 12345 به شماره " + phone + " ارسال گردید.");
-      document.getElementById('stepPhone').style.display = 'none';
-      document.getElementById('stepCode').style.display = 'block';
+      localStorage.setItem('userPhone', phone);
+      alert("کد تایید تستی به شماره " + phone + " ارسال گردید: 12345");
+      document.getElementById('authPhoneStep').style.display = 'none';
+      document.getElementById('authCodeStep').style.display = 'block';
     }
 
-    // مرحله ۲ اعتبارسنجی کد
-    function verifyOtpCode() {
-      const code = document.getElementById('otpCode').value.trim();
+    function verifyOtp() {
+      const code = document.getElementById('loginCode').value.trim();
       if (code === "12345" || code.length === 5) {
-        userLoggedIn = true;
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userPhone', userPhoneNumber);
-        updateUserUI();
-        closeAuthModal();
-        alert("احراز هویت شما با موفقیت تایید شد!");
+        localStorage.setItem('userAuth', 'true');
+        isAuth = true;
+        closeAuth();
+        updateAuthBtn();
+        alert("احراز هویت با موفقیت انجام شد.");
       } else {
-        alert("کد وارد شده اشتباه است.");
+        alert("کد وارد شده صحیح نمی‌باشد.");
       }
     }
 
-    function updateUserUI() {
+    function updateAuthBtn() {
       const btn = document.getElementById('authBtn');
-      if (userLoggedIn) {
-        btn.innerText = `حساب کاربری (${localStorage.getItem('userPhone') || 'کاربر'})`;
+      if (isAuth) {
+        btn.innerText = `حساب کاربری (${localStorage.getItem('userPhone') || 'تایید شده'})`;
         btn.onclick = () => {
           if (confirm("آیا می‌خواهید از حساب خارج شوید؟")) {
             localStorage.clear();
-            userLoggedIn = false;
             location.reload();
           }
         };
       }
     }
 
-    // درخواست اتصال به درگاه زیبال
-    async function startPayment(packageKey, amount) {
-      if (!userLoggedIn) {
-        alert("برای امنیت معاملات و صدور فاکتور، ابتدا باید شماره همراه خود را احراز هویت کنید.");
-        openAuthModal();
+    async function payPackage(pkg, price) {
+      if (!isAuth) {
+        alert("ابتدا باید شماره موبایل خود را تایید و احراز هویت نمایید.");
+        openAuth();
         return;
       }
 
       try {
-        const response = await fetch(`${BACKEND_URL}/api/request`, {
+        const res = await fetch(`${SERVER_URL}/api/request`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            amount: amount,
-            description: `خرید پکیج ${packageKey} - ماشین آنلاین`,
-            mobile: userPhoneNumber
+            amount: price,
+            description: `خرید پکیج ${pkg} در بازار خودرو`,
+            mobile: localStorage.getItem('userPhone') || ""
           })
         });
-
-        const resData = await response.json();
-        if (resData.trackId) {
-          // انتقال به صفحه پرداخت شاپرک زیبال
-          window.location.href = `https://gateway.zibal.ir/start/${resData.trackId}`;
+        const data = await res.json();
+        if (data.trackId) {
+          window.location.href = `https://gateway.zibal.ir/start/${data.trackId}`;
         } else {
-          alert("خطا در ایجاد تراکنش: " + (resData.message || "لطفاً مجدداً امتحان کنید"));
+          alert("خطا در ایجاد درگاه زیبال: " + (data.message || "لطفاً ارتباط سرور را بررسی کنید"));
         }
-      } catch (err) {
-        alert("در حال حاضر اتصال به سرور درگاه مقدور نیست. لطفاً از روشن بودن سرور بک‌اند اطمینان حاصل کنید.");
+      } catch (e) {
+        alert("خطا در ارتباط با سرور پرداخت. سرور در حال راه‌اندازی است، دقایقی دیگر امتحان کنید.");
       }
     }
 
-    // بارگذاری اولیه
-    renderCars(carsData);
-    updateUserUI();
+    function handleAdSubmit(e) {
+      e.preventDefault();
+      if (!isAuth) {
+        alert("برای ثبت آگهی، ابتدا باید احراز هویت فرمایید.");
+        openAuth();
+        return;
+      }
+      alert("مشخصات خودرو ذخیره شد. لطفاً یکی از پکیج‌های ثبت آگهی را جهت پرداخت نهایی انتخاب کنید.");
+      window.location.hash = "packages";
+    }
+
+    renderCars(defaultCars);
+    updateAuthBtn();
   </script>
 </body>
 </html>
