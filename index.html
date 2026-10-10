@@ -1,834 +1,349 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- SEO Meta Tags -->
-    <title>بازار خودرو | خرید و فروش خودرو در تهران | قیمت خودرو امروز</title>
-    <meta name="description" content="بازار خودرو Auto Max - خرید و فروش خودرو صفر و کارکرده، ثبت آگهی تخصصی، قیمت روز خودرو، مشاوره رایگان. بیش از 1200 آگهی فعال.">
-    <meta name="keywords" content="خرید خودرو تهران, فروش خودرو, قیمت خودرو امروز, پژو 207, پراید, تیبا, کرولا, ثبت آگهی خودرو">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="author" content="بازار خودرو Auto Max">
-    <meta name="theme-color" content="#0B1E3D">
-    
-    <!-- Canonical -->
-    <link rel="canonical" href="https://mashin-online.ir/">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="بازار خودرو | خرید و فروش خودرو در تهران">
-    <meta property="og:description" content="خرید و فروش خودرو صفر و کارکرده، ثبت آگهی، قیمت روز و مشاوره رایگان.">
-    <meta property="og:url" content="https://mashin-online.ir/">
-    <meta property="og:locale" content="fa_IR">
-    
-    <!-- Icons -->
-    <link rel="icon" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- JSON-LD Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "بازار خودرو Auto Max",
-        "image": "https://mashin-online.ir/logo.svg",
-        "description": "بازار خودرو - خرید و فروش خودرو در تهران",
-        "url": "https://mashin-online.ir",
-        "telephone": "+98-21-91008800",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "خیابان آزادی، تقاطع شادمان",
-            "addressLocality": "تهران",
-            "addressCountry": "IR"
-        },
-        "areaServed": "IR",
-        "priceRange": "$$"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بازار خودرو | تعرفه پکیج‌های تخصصی ثبت آگهی و فروش</title>
+  <link rel="canonical" href="https://mashin-online.ir/">
+  <link rel="icon" href="/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #0B1E3D;
+      --gold: #D4AF37;
+      --gold-hover: #b5952f;
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
     }
-    </script>
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), #061224);
+      color: white;
+      padding: 20px 0;
+      border-bottom: 3px solid var(--gold);
+      text-align: center;
+    }
+    header h1 { font-size: 1.8rem; font-weight: 900; }
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --navy: #0B1E3D;
-            --gold: #D4AF37;
-            --white: #FFFFFF;
-            --gray-50: #F8FAFC;
-            --gray-200: #E2E8F0;
-            --gray-600: #475569;
-            --gray-800: #1E293B;
-        }
-        
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: var(--gray-50);
-            color: var(--gray-800);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-        
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--navy), #061224);
-            color: var(--white);
-            padding: 18px 0;
-            border-bottom: 3px solid var(--gold);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 800;
-            font-size: 1.2rem;
-        }
-        
-        .logo span {
-            font-size: 24px;
-        }
-        
-        .nav {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-        
-        .nav a {
-            color: #E2E8F0;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-        
-        .nav a:hover {
-            color: var(--gold);
-        }
-        
-        .btn-header {
-            background: linear-gradient(135deg, var(--gold), #F0CA5B);
-            color: var(--navy);
-            padding: 10px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-header:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #061224 0%, var(--navy) 60%, #152E53 100%);
-            color: var(--white);
-            padding: 48px 0 54px;
-            border-bottom: 3px solid var(--gold);
-        }
-        
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 16px;
-            font-weight: 900;
-            line-height: 1.3;
-        }
-        
-        .hero p {
-            font-size: 1.05rem;
-            color: #CBD5E1;
-            margin-bottom: 24px;
-            max-width: 700px;
-        }
-        
-        .accent {
-            color: var(--gold);
-        }
-        
-        /* Search Box */
-        .search-box {
-            background: var(--white);
-            border-radius: 14px;
-            padding: 24px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-            border: 2px solid var(--gold);
-            margin-top: 32px;
-        }
-        
-        .search-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            align-items: flex-end;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        
-        .form-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--navy);
-        }
-        
-        .form-input, .form-select {
-            width: 100%;
-            height: 44px;
-            padding: 8px 12px;
-            border: 1px solid var(--gray-200);
-            border-radius: 8px;
-            background-color: var(--white);
-            color: var(--gray-800);
-            font-size: 14px;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        
-        .form-input:focus, .form-select:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-        }
-        
-        .btn-search {
-            height: 44px;
-            background: var(--navy);
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 15px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.3s;
-        }
-        
-        .btn-search:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-        
-        /* Main Content */
-        .main-content {
-            padding: 48px 0;
-        }
-        
-        .section-title {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 28px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .section-title::before {
-            content: '';
-            width: 6px;
-            height: 26px;
-            background: var(--gold);
-            border-radius: 3px;
-        }
-        
-        /* Cars Grid */
-        .cars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 36px;
-        }
-        
-        .car-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .car-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
-            border-color: var(--gold);
-        }
-        
-        .car-image {
-            width: 100%;
-            height: 180px;
-            background: var(--gray-200);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray-600);
-            font-size: 48px;
-            overflow: hidden;
-        }
-        
-        .car-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .car-info {
-            padding: 16px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .car-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-        
-        .car-specs {
-            font-size: 12px;
-            color: var(--gray-600);
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed var(--gray-200);
-        }
-        
-        .car-price {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 12px;
-        }
-        
-        .btn-car {
-            width: 100%;
-            background: var(--navy);
-            color: var(--white);
-            border: none;
-            padding: 9px 0;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-car:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-        
-        /* Packages */
-        .packages-section {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 16px;
-            margin: 40px 0;
-        }
-        
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 24px;
-        }
-        
-        .package-card {
-            background: linear-gradient(180deg, var(--white), #F8FAFC);
-            border: 2px solid var(--gray-200);
-            border-radius: 16px;
-            padding: 28px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .package-card:hover {
-            border-color: var(--gold);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
-            transform: translateY(-4px);
-        }
-        
-        .package-card.featured {
-            border-color: var(--gold);
-            background: linear-gradient(180deg, #FFFDF5, var(--white));
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
-        }
-        
-        .package-name {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 6px;
-        }
-        
-        .package-price {
-            font-size: 28px;
-            font-weight: 900;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-        
-        .package-features {
-            list-style: none;
-            margin-bottom: 20px;
-            text-align: right;
-        }
-        
-        .package-features li {
-            padding: 8px 0;
-            font-size: 14px;
-            color: var(--gray-600);
-        }
-        
-        .package-features li:before {
-            content: "✓ ";
-            color: #10B981;
-            font-weight: 800;
-            margin-left: 8px;
-        }
-        
-        .btn-package {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--gold);
-            background: var(--navy);
-            color: var(--white);
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-package:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-        
-        .btn-package.featured {
-            background: linear-gradient(135deg, var(--gold), #F0CA5B);
-            color: var(--navy);
-            border: none;
-        }
-        
-        .btn-package.featured:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-        }
-        
-        /* Footer */
-        .footer {
-            background: #061224;
-            color: #94A3B8;
-            padding: 40px 0 24px;
-            border-top: 3px solid var(--gold);
-            margin-top: 60px;
-        }
-        
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-text {
-            font-size: 0.9rem;
-        }
-        
-        .footer-text strong {
-            display: block;
-            color: var(--white);
-            margin-bottom: 6px;
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--gray-600);
-        }
-        
-        .modal h2 {
-            color: var(--navy);
-            margin-bottom: 16px;
-            font-size: 1.8rem;
-        }
-        
-        .modal-price {
-            font-size: 2rem;
-            color: var(--gold);
-            font-weight: 900;
-            margin-bottom: 24px;
-        }
-        
-        .modal-form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .modal-form input {
-            padding: 12px;
-            border: 1px solid var(--gray-200);
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: inherit;
-        }
-        
-        .btn-submit {
-            background: linear-gradient(135deg, var(--gold), #F0CA5B);
-            color: var(--navy);
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .search-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav {
-                gap: 15px;
-            }
-            
-            .cars-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .packages-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    /* Hero Notice */
+    .hero-notice {
+      background: #FFFBEB;
+      border: 2px dashed var(--gold);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 30px auto;
+      text-align: center;
+      color: #92400E;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    /* Pricing Grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+    .pricing-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 30px 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+      border-color: var(--gold);
+    }
+    .pricing-card.featured {
+      border: 2px solid var(--gold);
+      background: #FFFDF9;
+    }
+    .badge-featured {
+      position: absolute;
+      top: -14px;
+      right: 50%;
+      transform: translateX(50%);
+      background: linear-gradient(135deg, var(--gold), #F0CA5B);
+      color: var(--primary);
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      min-height: 44px;
+      margin-bottom: 20px;
+    }
+    .price-box {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+    .price-box span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .features-list {
+      list-style: none;
+      margin-bottom: 30px;
+      flex: 1;
+    }
+    .features-list li {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .features-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: bold;
+    }
+    .btn-select {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+    .featured .btn-select {
+      background: var(--gold);
+      color: var(--primary);
+    }
+    .btn-select:hover {
+      background: var(--gold-hover);
+      color: white;
+    }
+
+    /* Form Wizard */
+    .form-section {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 36px;
+      margin-bottom: 60px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+    .form-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .wizard-steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .step-item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .step-item.active {
+      color: var(--primary);
+    }
+    .step-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #EEF2F6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      font-weight: 800;
+      border: 2px solid var(--border);
+    }
+    .step-item.active .step-circle {
+      background: var(--gold);
+      color: var(--primary);
+      border-color: var(--gold);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--gold);
+    }
+    .full-width {
+      grid-column: 1 / -1;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container header-inner">
-            <a href="/" class="logo">
-                <span>🚗</span>
-                <span>بازار خودرو</span>
-            </a>
-            <nav class="nav">
-                <a href="#cars">خودروها</a>
-                <a href="#packages">پکیج‌ها</a>
-                <a href="#contact">تماس</a>
-            </nav>
-            <button class="btn-header" onclick="document.getElementById('postAd').classList.add('active')">ثبت آگهی</button>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>خرید و فروش خودرو در تهران با <span class="accent">بازار خودرو</span></h1>
-            <p>بیش از 1200 آگهی خودرو صفر و کارکرده، قیمت روز، بررسی فنی و مشاوره رایگان. معاملات امن با تایید هویت فروشنده.</p>
-            
-            <!-- Search Box -->
-            <div class="search-box">
-                <div class="search-grid">
-                    <div class="form-group">
-                        <label class="form-label">برند خودرو</label>
-                        <select class="form-select" id="brand">
-                            <option value="">انتخاب برند</option>
-                            <option value="peugeot">پژو</option>
-                            <option value="pride">پراید</option>
-                            <option value="tiiba">تیبا</option>
-                            <option value="corolla">کرولا</option>
-                            <option value="renault">رنو</option>
-                            <option value="toyota">تویوتا</option>
-                            <option value="hyundai">هیوندای</option>
-                            <option value="kia">کیا</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">قیمت (تومان)</label>
-                        <input type="number" class="form-input" placeholder="حداقل" id="priceMin">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">حداکثر قیمت</label>
-                        <input type="number" class="form-input" placeholder="حداکثر" id="priceMax">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">سال خودرو</label>
-                        <select class="form-select" id="year">
-                            <option value="">انتخاب سال</option>
-                            <option value="1403">1403</option>
-                            <option value="1402">1402</option>
-                            <option value="1401">1401</option>
-                            <option value="1400">1400</option>
-                            <option value="1399">1399</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">کیلومتر</label>
-                        <input type="number" class="form-input" placeholder="کیلومتر" id="km">
-                    </div>
-                    <button class="btn-search" onclick="searchCars()">🔍 جست‌وجو</button>
-                </div>
-            </div>
-        </div>
-    </section>
+  <header>
+    <div class="container">
+      <h1>بازار خودرو | تعرفه پکیج‌های تخصصی ثبت آگهی و فروش</h1>
+    </div>
+  </header>
 
-    <!-- Main Content -->
-    <div class="container main-content">
-        <!-- Cars Section -->
-        <section id="cars">
-            <h2 class="section-title">خودروهای موجود</h2>
-            <div class="cars-grid" id="carsList">
-                <!-- Cars will be loaded here -->
-            </div>
-        </section>
-
-        <!-- Packages Section -->
-        <section id="packages" class="packages-section">
-            <h2 class="section-title">پکیج‌های ثبت آگهی</h2>
-            <div class="packages-grid">
-                <div class="package-card">
-                    <div class="package-name">🥉 برنزی</div>
-                    <div class="package-price">۱,۳۶۰,۰۰۰</div>
-                    <ul class="package-features">
-                        <li>ثبت آگهی 30 روزه</li>
-                        <li>تایید هویت فروشنده</li>
-                        <li>نمایش در لیست</li>
-                        <li>پشتیبانی 24/7</li>
-                    </ul>
-                    <button class="btn-package" onclick="buyPackage('bronze', 1360000)">خریدن</button>
-                </div>
-
-                <div class="package-card featured">
-                    <div class="package-name">🥈 نقره‌ای</div>
-                    <div class="package-price">۲,۶۷۰,۰۰۰</div>
-                    <ul class="package-features">
-                        <li>ثبت آگهی 60 روزه</li>
-                        <li>تایید هویت</li>
-                        <li>اولویت در جست‌وجو</li>
-                        <li>پشتیبانی ویژه</li>
-                    </ul>
-                    <button class="btn-package featured" onclick="buyPackage('silver', 2670000)">خریدن</button>
-                </div>
-
-                <div class="package-card">
-                    <div class="package-name">🥇 طلایی</div>
-                    <div class="package-price">۳,۹۸۰,۰۰۰</div>
-                    <ul class="package-features">
-                        <li>ثبت آگهی 90 روزه</li>
-                        <li>تایید هویت</li>
-                        <li>بالاترین اولویت</li>
-                        <li>تبلیغات هدفمند</li>
-                    </ul>
-                    <button class="btn-package" onclick="buyPackage('gold', 3980000)">خریدن</button>
-                </div>
-            </div>
-        </section>
+  <main class="container">
+    <div class="hero-notice">
+      بدون هیچ پکیج رایگان — پکیج‌ها از ۱,۲۵۰,۰۰۰ تومان آغاز می‌شوند و تضمین‌کننده خریدار واقعی هستند.
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-inner">
-            <div class="footer-text">
-                <strong>بازار خودرو Auto Max</strong>
-                خرید، فروش و ثبت آگهی خودرو در تهران
-            </div>
-            <div class="footer-text">
-                📞 <strong>تماس:</strong> 021-91008800
-            </div>
-            <div class="footer-text">
-                © 2026 بازار خودرو. تمام حقوق محفوظ است.
-            </div>
-        </div>
-    </footer>
+    <!-- Pricing Cards -->
+    <div class="pricing-grid">
+      <!-- Bronze -->
+      <div class="pricing-card">
+        <h2 class="card-title">پکیج برنزی</h2>
+        <p class="card-desc">مناسب فروش خودروهای اقتصادی و معاملات شخصی استاندارد</p>
+        <div class="price-box">۱,۲۵۰,۰۰۰ <span>تومان</span></div>
+        <ul class="features-list">
+          <li>نمایش رسمی ۳۰ روزه در سراسر سایت</li>
+          <li>امکان آپلود تا ۵ تصویر باکیفیت</li>
+          <li>چکاپ اولیه اصالت مدارک و سند</li>
+          <li>پشتیبانی چت آنلاین ۷ روز هفته</li>
+        </ul>
+        <button class="btn-select">انتخاب پکیج برنزی</button>
+      </div>
 
-    <!-- Post Ad Modal -->
-    <div id="postAd" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="document.getElementById('postAd').classList.remove('active')">✕</button>
-            <h2>ثبت آگهی خودرو</h2>
-            <p>لطفاً یک پکیج انتخاب کنید:</p>
-            <div class="packages-grid" style="margin-top: 20px;">
-                <button class="btn-package" onclick="buyPackage('bronze', 1360000); document.getElementById('postAd').classList.remove('active')">
-                    🥉 برنزی<br>۱,۳۶۰,۰۰۰
-                </button>
-                <button class="btn-package featured" onclick="buyPackage('silver', 2670000); document.getElementById('postAd').classList.remove('active')">
-                    🥈 نقره‌ای<br>۲,۶۷۰,۰۰۰
-                </button>
-                <button class="btn-package" onclick="buyPackage('gold', 3980000); document.getElementById('postAd').classList.remove('active')">
-                    🥇 طلایی<br>۳,۹۸۰,۰۰۰
-                </button>
-            </div>
-        </div>
+      <!-- Silver -->
+      <div class="pricing-card featured">
+        <div class="badge-featured">پرفروش‌ترین پکیج</div>
+        <h2 class="card-title">پکیج نقره‌ای ویژه</h2>
+        <p class="card-desc">فروش تا ۳ برابر سریع‌تر با نردبان هفتگی و آگهی ویژه</p>
+        <div class="price-box">۲,۴۵۰,۰۰۰ <span>تومان</span></div>
+        <ul class="features-list">
+          <li>نمایش ۴۵ روزه با تگ تایید شده VIP</li>
+          <li>تصویربرداری حرفه‌ای اختصاصی در محل</li>
+          <li>۲ بار نردبان خودکار در صدر آگهی‌ها</li>
+          <li>ارسال پیامک اطلاع‌رسانی به خریداران فعال</li>
+          <li>آپلود نامحدود عکس و فیلم خودرو</li>
+        </ul>
+        <button class="btn-select">انتخاب پکیج نقره‌ای</button>
+      </div>
+
+      <!-- Gold -->
+      <div class="pricing-card">
+        <h2 class="card-title">پکیج طلایی VIP لوکس</h2>
+        <p class="card-desc">مدیریت صفر تا صد معامله توسط مشاور ارشد بازار خودرو</p>
+        <div class="price-box">۳,۹۰۰,۰۰۰ <span>تومان</span></div>
+        <ul class="features-list">
+          <li>نمایش در اسلایدر ویترین صفحه اول</li>
+          <li>پشتیبانی VIP و تضمین سلامت معامله با بیمه</li>
+          <li>نردبان روزانه و انتشار در شبکه‌های اجتماعی</li>
+          <li>تنظیم مبایعه‌نامه رسمی با نظارت مشاور حقوقی</li>
+        </ul>
+        <button class="btn-select">انتخاب پکیج طلایی</button>
+      </div>
     </div>
 
-    <script>
-        // Sample cars data
-        const carsData = [
-            {
-                brand: 'peugeot',
-                title: 'پژو 207 پانوراما',
-                price: '985,000,000',
-                specs: '1402 | 24k کیلومتر | اتوماتیک',
-                image: '🚗'
-            },
-            {
-                brand: 'pride',
-                title: 'پراید صفر کیلومتر',
-                price: '650,000,000',
-                specs: '1403 | صفر | دستی',
-                image: '🚙'
-            },
-            {
-                brand: 'tiiba',
-                title: 'تیبا 1402',
-                price: '550,000,000',
-                specs: '1402 | 45k | دستی',
-                image: '🚗'
-            },
-            {
-                brand: 'corolla',
-                title: 'کرولا 1401',
-                price: '1,250,000,000',
-                specs: '1401 | 65k | اتوماتیک',
-                image: '🚘'
-            },
-            {
-                brand: 'renault',
-                title: 'رنو ۱۱۲',
-                price: '480,000,000',
-                specs: '1402 | 30k | دستی',
-                image: '🚗'
-            }
-        ];
+    <!-- Wizard Form -->
+    <div class="form-section">
+      <h3 class="form-title">فرم ثبت مشخصات آگهی فروش خودرو</h3>
+      
+      <div class="wizard-steps">
+        <div class="step-item active">
+          <div class="step-circle">۱</div>
+          مشخصات اولیه
+        </div>
+        <div class="step-item">
+          <div class="step-circle">۲</div>
+          وضعیت بدنه و فنی
+        </div>
+        <div class="step-item">
+          <div class="step-circle">۳</div>
+          عکس و توضیحات
+        </div>
+        <div class="step-item">
+          <div class="step-circle">۴</div>
+          پرداخت پکیج
+        </div>
+      </div>
 
-        // Load cars
-        function loadCars() {
-            const carsList = document.getElementById('carsList');
-            carsList.innerHTML = carsData.map(car => `
-                <div class="car-card">
-                    <div class="car-image">${car.image}</div>
-                    <div class="car-info">
-                        <div class="car-title">${car.title}</div>
-                        <div class="car-specs">${car.specs}</div>
-                        <div class="car-price">${car.price} تومان</div>
-                        <button class="btn-car">مشاهده جزئیات</button>
-                    </div>
-                </div>
-            `).join('');
-        }
+      <form class="form-grid">
+        <div class="form-group">
+          <label>برند و مدل خودرو</label>
+          <input type="text" placeholder="مثال: پژو 207 دنده‌ای">
+        </div>
+        <div class="form-group">
+          <label>سال تولید</label>
+          <input type="text" placeholder="مثال: 1402">
+        </div>
+        <div class="form-group">
+          <label>کارکرد (کیلومتر)</label>
+          <input type="text" placeholder="مثال: 35000">
+        </div>
+        <div class="form-group">
+          <label>شماره تماس مالک</label>
+          <input type="tel" placeholder="09xxxxxxxxx">
+        </div>
+        <div class="form-group full-width">
+          <label>توضیحات تکمیلی</label>
+          <textarea rows="3" placeholder="توضیحات درباره وضعیت رنگ، بیمه، لاستیک و..."></textarea>
+        </div>
+        <div class="form-group full-width" style="margin-top: 15px;">
+          <button type="button" class="btn-select" style="max-width: 220px; margin: 0 auto;">مرحله بعد (وضعیت بدنه)</button>
+        </div>
+      </form>
+    </div>
+  </main>
 
-        // Search cars
-        function searchCars() {
-            alert('جست‌وجو برای: ' + document.getElementById('brand').value);
-        }
-
-        // Buy package with Zibal
-        function buyPackage(packageName, price) {
-            const data = {
-                merchant: 'YOUR_MERCHANT_ID', // Replace with your Zibal merchant ID
-                amount: price * 10, // Zibal expects amount in Rials
-                callbackURL: 'https://mashin-online.ir/payment-callback',
-                description: `خرید پکیج ${packageName}`
-            };
-
-            fetch('https://api.zibal.ir/v1/request', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.result === 100) {
-                    window.location.href = `https://gateway.zibal.ir/start/${data.trackId}`;
-                } else {
-                    alert('خطایی در درگاه پرداخت رخ داد. لطفاً دوباره تلاش کنید.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('خطایی رخ داد. لطفاً دوباره تلاش کنید.');
-            });
-        }
-
-        // Initialize
-        window.addEventListener('load', loadCars);
-    </script>
 </body>
 </html>
