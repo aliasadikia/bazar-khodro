@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Allow: /cars/
+Disallow: /private/
+Host: mashin-online.ir
 
-Sitemap: https://aliasadikia.github.io/bazar-khodro/sitemap.xml
+Sitemap: https://mashin-online.ir/sitemap.xml
