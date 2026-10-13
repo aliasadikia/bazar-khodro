@@ -2558,71 +2558,140 @@ let selectedPackagePrice = 1250000;
   </script>
 </body>
 </html>
-<!-- پنجره ورود و پیامک کاوه‌نگار -->
-<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
-  <div style="background:#fff; padding:25px; border-radius:12px; width:90%; max-width:360px; text-align:center; direction:rtl; font-family:tahoma;">
-    <h3 style="margin-bottom:15px; color:#222;">ورود با شماره موبایل</h3>
-    <input type="tel" id="userPhone" placeholder="مثال: 09123456789" style="width:100%; padding:10px; margin-bottom:12px; border:1px solid #ccc; border-radius:8px; text-align:center; font-size:16px;">
+<!-- پنجره ورود و ثبت‌نام سریع و رایگان (ماشین آنلاین) -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:99999; justify-content:center; align-items:center; backdrop-filter:blur(3px);">
+  <div style="background:#fff; padding:28px 22px; border-radius:16px; width:90%; max-width:360px; text-align:center; direction:rtl; font-family:tahoma, sans-serif; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
     
-    <div id="otpSection" style="display:none;">
-      <input type="text" id="otpCode" placeholder="کد تایید ۴ رقمی" style="width:100%; padding:10px; margin-bottom:12px; border:1px solid #ccc; border-radius:8px; text-align:center; font-size:18px; letter-spacing:4px;">
-      <button onclick="verifyCode()" style="width:100%; padding:10px; background:#10b981; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:15px; margin-bottom:8px;">تایید و ورود</button>
+    <h3 id="modalTitle" style="margin:0 0 8px 0; color:#1e293b; font-size:19px; font-weight:bold;">ورود به حساب کاربری</h3>
+    <p id="modalSub" style="margin:0 0 18px 0; color:#64748b; font-size:13px;">شماره موبایل و رمز عبور خود را وارد کنید</p>
+
+    <!-- شماره موبایل -->
+    <input type="tel" id="authPhone" placeholder="شماره موبایل (مثال: 09123456789)" style="width:100%; padding:12px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:10px; text-align:center; font-size:15px; box-sizing:border-box; outline:none;">
+
+    <!-- رمز عبور -->
+    <input type="password" id="authPass" placeholder="رمز عبور" style="width:100%; padding:12px; margin-bottom:14px; border:1px solid #cbd5e1; border-radius:10px; text-align:center; font-size:15px; box-sizing:border-box; outline:none;">
+
+    <!-- دکمه ورود / ثبت‌نام -->
+    <button id="authSubmitBtn" onclick="handleAuth()" style="width:100%; padding:12px; background:#2563eb; color:#fff; border:none; border-radius:10px; cursor:pointer; font-size:15px; font-weight:bold; transition:0.2s;">ورود</button>
+
+    <!-- تغییر حالت بین ورود و ثبت‌نام -->
+    <div style="margin-top:14px; font-size:13px; color:#475569;">
+      <span id="toggleText">حساب کاربری ندارید؟</span>
+      <a href="javascript:void(0)" onclick="toggleAuthMode()" id="toggleBtn" style="color:#2563eb; text-decoration:none; font-weight:bold; margin-right:4px;">ثبت‌نام سریع</a>
     </div>
 
-    <button id="sendBtn" onclick="sendOtpSms()" style="width:100%; padding:10px; background:#2563eb; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:15px;">دریافت کد تایید</button>
-    <button onclick="closeLoginModal()" style="width:100%; margin-top:8px; background:none; border:none; color:#666; cursor:pointer;">انصراف</button>
+    <!-- دکمه انصراف -->
+    <button onclick="closeLoginModal()" style="width:100%; margin-top:10px; background:none; border:none; color:#94a3b8; cursor:pointer; font-size:13px;">بستن</button>
   </div>
 </div>
 
 <script>
-let generatedOtp = null;
+let isRegisterMode = false;
 
+// باز کردن پنجره
 function openLoginModal() {
+  const modal = document.getElementById('loginModal');
+  if (modal) modal style="display:flex";
   document.getElementById('loginModal').style.display = 'flex';
 }
 
+// بستن پنجره
 function closeLoginModal() {
   document.getElementById('loginModal').style.display = 'none';
 }
 
-function sendOtpSms() {
-  const phone = document.getElementById('userPhone').value.trim();
+// تغییر بین حالت ورود و ثبت‌نام
+function toggleAuthMode() {
+  isRegisterMode = !isRegisterMode;
+  const title = document.getElementById('modalTitle');
+  const sub = document.getElementById('modalSub');
+  const submitBtn = document.getElementById('authSubmitBtn');
+  const toggleText = document.getElementById('toggleText');
+  const toggleBtn = document.getElementById('toggleBtn');
+
+  if (isRegisterMode) {
+    title.innerText = 'ثبت‌نام سریع در ماشین آنلاین';
+    sub.innerText = 'یک رمز دلخواه برای حساب خود انتخاب کنید';
+    submitBtn.innerText = 'ایجاد حساب و ورود';
+    submitBtn.style.background = '#10b981';
+    toggleText.innerText = 'قبلاً ثبت‌نام کرده‌اید؟';
+    toggleBtn.innerText = 'ورود به حساب';
+  } else {
+    title.innerText = 'ورود به حساب کاربری';
+    sub.innerText = 'شماره موبایل و رمز عبور خود را وارد کنید';
+    submitBtn.innerText = 'ورود';
+    submitBtn.style.background = '#2563eb';
+    toggleText.innerText = 'حساب کاربری ندارید؟';
+    toggleBtn.innerText = 'ثبت‌نام سریع';
+  }
+}
+
+// ثبت‌نام یا ورود کاربر
+function handleAuth() {
+  const phone = document.getElementById('authPhone').value.trim();
+  const pass = document.getElementById('authPass').value.trim();
+
   if (!phone || phone.length < 11) {
-    alert('لطفاً شماره موبایل معتبر ۱۱ رقمی وارد کنید.');
+    alert('لطفاً شماره موبایل ۱۱ رقمی معتبر وارد کنید.');
+    return;
+  }
+  if (!pass || pass.length < 4) {
+    alert('رمز عبور باید حداقل ۴ رقم یا حرف باشد.');
     return;
   }
 
-  // ساخت کد ۴ رقمی تصادفی
-  generatedOtp = Math.floor(1000 + Math.random() * 9000);
+  // دریافت اطلاعات از حافظه
+  let users = JSON.parse(localStorage.getItem('mo_users') || '{}');
 
-  // کلید اختصاصی API شما از کاوه‌نگار
-  const apiKey = '483775******************************************************************************383D;
-  const message = encodeURIComponent(`کد تایید ماشین آنلاین: ${generatedOtp}`);
-  const targetUrl = `https://api.kavenegar.com/v1/${apiKey}/sms/send.json?receptor=${phone}&message=${message}`;
-
-  document.getElementById('sendBtn').innerText = 'در حال ارسال...';
-
-  // دور زدن محدودیت مرورگر با ایجاد تگ اسکریپت
-  const scriptTag = document.createElement('script');
-  scriptTag.src = targetUrl;
-  document.body.appendChild(scriptTag);
-
-  setTimeout(function() {
-    alert('درخواست ارسال شد. پیامک‌های گوشی را چک کنید.');
-    document.getElementById('userPhone').disabled = true;
-    document.getElementById('sendBtn').style.display = 'none';
-    document.getElementById('otpSection').style.display = 'block';
-  }, 1200);
-}
-
-function verifyCode() {
-  const enteredCode = document.getElementById('otpCode').value.trim();
-  if (enteredCode == generatedOtp) {
+  if (isRegisterMode) {
+    // ثبت‌نام جدید
+    if (users[phone]) {
+      alert('این شماره قبلاً ثبت‌نام شده است! لطفاً وارد شوید.');
+      toggleAuthMode();
+      return;
+    }
+    users[phone] = pass;
+    localStorage.setItem('mo_users', JSON.stringify(users));
+    localStorage.setItem('mo_currentUser', phone);
+    alert('ثبت‌نام با موفقیت انجام شد! خوش آمدید.');
+    closeLoginModal();
+    updateUserUI(phone);
+  } else {
+    // ورود
+    if (!users[phone]) {
+      alert('این شماره هنوز ثبت‌نام نشده است. لطفاً گزینه «ثبت‌نام سریع» را بزنید.');
+      return;
+    }
+    if (users[phone] !== pass) {
+      alert('رمز عبور وارد شده اشتباه است!');
+      return;
+    }
+    localStorage.setItem('mo_currentUser', phone);
     alert('ورود با موفقیت انجام شد!');
     closeLoginModal();
-  } else {
-    alert('کد وارد شده اشتباه است.');
+    updateUserUI(phone);
   }
 }
-</script>
 
+// به‌روزرسانی ظاهر دکمه ورود پس از لاگین
+function updateUserUI(phone) {
+  const loginButtons = document.querySelectorAll('button[onclick="openLoginModal()"]');
+  loginButtons.forEach(btn => {
+    btn.innerText = `حساب من (${phone.slice(-4)})`;
+    btn.onclick = function() {
+      if (confirm('آیا می‌خواهید از حساب خود خارج شوید؟')) {
+        localStorage.removeItem('mo_currentUser');
+        location.reload();
+      }
+    };
+  });
+}
+
+// بررسی لاگین بودن کاربر هنگام باز شدن سایت
+window.addEventListener('DOMContentLoaded', () => {
+  const savedUser = localStorage.getItem('mo_currentUser');
+  if (savedUser) {
+    updateUserUI(savedUser);
+  }
+});
+</script>
