@@ -2596,7 +2596,7 @@ async function sendOtpSms() {
   generatedOtp = Math.floor(1000 + Math.random() * 9000);
 
   // ارسال پیامک با کاوه‌نگار
-  const apiKey = 'GAPGPTMASKTOKEN6fbzxglqiv7X0X';
+  const apiKey = '786E7A57735158717157366B4A436769532F754C574D7A572B5276677147415A5371565A77576E776342453D';
   const message = encodeURIComponent(`ماشین آنلاین\nکد تایید شما: ${generatedOtp}`);
   const url = `https://api.kavenegar.com/v1/${apiKey}/sms/send.json?receptor=${phone}&message=${message}`;
 
