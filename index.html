@@ -2559,20 +2559,20 @@ let selectedPackagePrice = 1250000;
 </body>
 </html>
 <!-- پنجره ورود و ثبت‌نام سریع و رایگان (ماشین آنلاین) -->
-<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:99999; justify-content:center; align-items:center; backdrop-filter:blur(3px);">
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:99999; justify-content:center; align-items:center;">
   <div style="background:#fff; padding:28px 22px; border-radius:16px; width:90%; max-width:360px; text-align:center; direction:rtl; font-family:tahoma, sans-serif; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
     
     <h3 id="modalTitle" style="margin:0 0 8px 0; color:#1e293b; font-size:19px; font-weight:bold;">ورود به حساب کاربری</h3>
     <p id="modalSub" style="margin:0 0 18px 0; color:#64748b; font-size:13px;">شماره موبایل و رمز عبور خود را وارد کنید</p>
 
     <!-- شماره موبایل -->
-    <input type="tel" id="authPhone" placeholder="شماره موبایل (مثال: 09123456789)" style="width:100%; padding:12px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:10px; text-align:center; font-size:15px; box-sizing:border-box; outline:none;">
+    <input type="tel" id="authPhone" placeholder="شماره موبایل (مثال: 09123456789)" style="width:100%; padding:12px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:10px; text-align:center; font-size:15px; box-sizing:border-box;">
 
     <!-- رمز عبور -->
-    <input type="password" id="authPass" placeholder="رمز عبور" style="width:100%; padding:12px; margin-bottom:14px; border:1px solid #cbd5e1; border-radius:10px; text-align:center; font-size:15px; box-sizing:border-box; outline:none;">
+    <input type="password" id="authPass" placeholder="رمز عبور" style="width:100%; padding:12px; margin-bottom:14px; border:1px solid #cbd5e1; border-radius:10px; text-align:center; font-size:15px; box-sizing:border-box;">
 
     <!-- دکمه ورود / ثبت‌نام -->
-    <button id="authSubmitBtn" onclick="handleAuth()" style="width:100%; padding:12px; background:#2563eb; color:#fff; border:none; border-radius:10px; cursor:pointer; font-size:15px; font-weight:bold; transition:0.2s;">ورود</button>
+    <button id="authSubmitBtn" onclick="handleAuth()" style="width:100%; padding:12px; background:#2563eb; color:#fff; border:none; border-radius:10px; cursor:pointer; font-size:15px; font-weight:bold;">ورود</button>
 
     <!-- تغییر حالت بین ورود و ثبت‌نام -->
     <div style="margin-top:14px; font-size:13px; color:#475569;">
@@ -2588,19 +2588,14 @@ let selectedPackagePrice = 1250000;
 <script>
 let isRegisterMode = false;
 
-// باز کردن پنجره
 function openLoginModal() {
-  const modal = document.getElementById('loginModal');
-  if (modal) modal style="display:flex";
   document.getElementById('loginModal').style.display = 'flex';
 }
 
-// بستن پنجره
 function closeLoginModal() {
   document.getElementById('loginModal').style.display = 'none';
 }
 
-// تغییر بین حالت ورود و ثبت‌نام
 function toggleAuthMode() {
   isRegisterMode = !isRegisterMode;
   const title = document.getElementById('modalTitle');
@@ -2626,7 +2621,6 @@ function toggleAuthMode() {
   }
 }
 
-// ثبت‌نام یا ورود کاربر
 function handleAuth() {
   const phone = document.getElementById('authPhone').value.trim();
   const pass = document.getElementById('authPass').value.trim();
@@ -2640,11 +2634,9 @@ function handleAuth() {
     return;
   }
 
-  // دریافت اطلاعات از حافظه
   let users = JSON.parse(localStorage.getItem('mo_users') || '{}');
 
   if (isRegisterMode) {
-    // ثبت‌نام جدید
     if (users[phone]) {
       alert('این شماره قبلاً ثبت‌نام شده است! لطفاً وارد شوید.');
       toggleAuthMode();
@@ -2657,7 +2649,6 @@ function handleAuth() {
     closeLoginModal();
     updateUserUI(phone);
   } else {
-    // ورود
     if (!users[phone]) {
       alert('این شماره هنوز ثبت‌نام نشده است. لطفاً گزینه «ثبت‌نام سریع» را بزنید.');
       return;
@@ -2673,7 +2664,6 @@ function handleAuth() {
   }
 }
 
-// به‌روزرسانی ظاهر دکمه ورود پس از لاگین
 function updateUserUI(phone) {
   const loginButtons = document.querySelectorAll('button[onclick="openLoginModal()"]');
   loginButtons.forEach(btn => {
@@ -2687,7 +2677,6 @@ function updateUserUI(phone) {
   });
 }
 
-// بررسی لاگین بودن کاربر هنگام باز شدن سایت
 window.addEventListener('DOMContentLoaded', () => {
   const savedUser = localStorage.getItem('mo_currentUser');
   if (savedUser) {
