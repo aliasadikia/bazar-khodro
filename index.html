@@ -2558,3 +2558,69 @@ let selectedPackagePrice = 1250000;
   </script>
 </body>
 </html>
+<!-- پنجره ورود و پیامک کاوه‌نگار -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:#fff; padding:25px; border-radius:12px; width:90%; max-width:360px; text-align:center; direction:rtl; font-family:tahoma;">
+    <h3 style="margin-bottom:15px; color:#222;">ورود با شماره موبایل</h3>
+    <input type="tel" id="userPhone" placeholder="مثال: 09123456789" style="width:100%; padding:10px; margin-bottom:12px; border:1px solid #ccc; border-radius:8px; text-align:center; font-size:16px;">
+    
+    <div id="otpSection" style="display:none;">
+      <input type="text" id="otpCode" placeholder="کد تایید ۴ رقمی" style="width:100%; padding:10px; margin-bottom:12px; border:1px solid #ccc; border-radius:8px; text-align:center; font-size:18px; letter-spacing:4px;">
+      <button onclick="verifyCode()" style="width:100%; padding:10px; background:#10b981; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:15px; margin-bottom:8px;">تایید و ورود</button>
+    </div>
+
+    <button id="sendBtn" onclick="sendOtpSms()" style="width:100%; padding:10px; background:#2563eb; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:15px;">دریافت کد تایید</button>
+    <button onclick="closeLoginModal()" style="width:100%; margin-top:8px; background:none; border:none; color:#666; cursor:pointer;">انصراف</button>
+  </div>
+</div>
+
+<script>
+let generatedOtp = null;
+
+function openLoginModal() {
+  document.getElementById('loginModal').style.display = 'flex';
+}
+
+function closeLoginModal() {
+  document.getElementById('loginModal').style.display = 'none';
+}
+
+async function sendOtpSms() {
+  const phone = document.getElementById('userPhone').value.trim();
+  if (!phone || phone.length < 11) {
+    alert('لطفاً شماره موبایل معتبر وارد کنید.');
+    return;
+  }
+
+  // ساخت کد ۴ رقمی تصادفی
+  generatedOtp = Math.floor(1000 + Math.random() * 9000);
+
+  // ارسال پیامک با کاوه‌نگار
+  const apiKey = 'GAPGPTMASKTOKEN6fbzxglqiv7X0X';
+  const message = encodeURIComponent(`ماشین آنلاین\nکد تایید شما: ${generatedOtp}`);
+  const url = `https://api.kavenegar.com/v1/${apiKey}/sms/send.json?receptor=${phone}&message=${message}`;
+
+  try {
+    document.getElementById('sendBtn').innerText = 'در حال ارسال...';
+    await fetch(url, { mode: 'no-cors' });
+    
+    alert('کد تایید به گوشی شما ارسال شد.');
+    document.getElementById('userPhone').disabled = true;
+    document.getElementById('sendBtn').style.display = 'none';
+    document.getElementById('otpSection').style.display = 'block';
+  } catch (error) {
+    alert('خطا در ارسال پیامک.');
+    document.getElementById('sendBtn').innerText = 'دریافت کد تایید';
+  }
+}
+
+function verifyCode() {
+  const enteredCode = document.getElementById('otpCode').value.trim();
+  if (enteredCode == generatedOtp) {
+    alert('ورود با موفقیت انجام شد!');
+    closeLoginModal();
+  } else {
+    alert('کد وارد شده اشتباه است.');
+  }
+}
+</script>
