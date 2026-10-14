@@ -2520,10 +2520,6 @@ let selectedPackagePrice = 1250000;
       if (badge) badge.style.display = 'none';
     }
 
-    // راه‌اندازی اولیه
-    window.addEventListener('DOMContentLoaded', () => {
-      initCars();
-    });
 <!-- پنجره ورود و ثبت‌نام سریع و رایگان (ماشین آنلاین) -->
 <div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:99999; justify-content:center; align-items:center;">
   <div style="background:#fff; padding:28px 22px; border-radius:16px; width:90%; max-width:360px; text-align:center; direction:rtl; font-family:tahoma, sans-serif; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
@@ -2551,73 +2547,137 @@ let selectedPackagePrice = 1250000;
   </div>
 </div>
 
+<script>
+  // سیستم احراز هویت رایگان و مدیریت فرم و پکیج‌ها
+  var isRegisterMode = false;
 
-let isRegisterMode = false;
-
-function openLoginModal() {
-  document.getElementById('loginModal').style.display = 'flex';
-}
-
-function closeLoginModal() {
-  document.getElementById('loginModal').style.display = 'none';
-}
-
-function toggleAuthMode() {
-  isRegisterMode = !isRegisterMode;
-  const title = document.getElementById('modalTitle');
-  const sub = document.getElementById('modalSub');
-  const submitBtn = document.getElementById('authSubmitBtn');
-  const toggleText = document.getElementById('toggleText');
-  const toggleBtn = document.getElementById('toggleBtn');
-
-  if (isRegisterMode) {
-    title.innerText = 'ثبت‌نام سریع در ماشین آنلاین';
-    sub.innerText = 'یک رمز دلخواه برای حساب خود انتخاب کنید';
-    submitBtn.innerText = 'ایجاد حساب و ورود';
-    submitBtn.style.background = '#10b981';
-    toggleText.innerText = 'قبلاً ثبت‌نام کرده‌اید؟';
-    toggleBtn.innerText = 'ورود به حساب';
-  } else {
-    title.innerText = 'ورود به حساب کاربری';
-    sub.innerText = 'شماره موبایل و رمز عبور خود را وارد کنید';
-    submitBtn.innerText = 'ورود';
-    submitBtn.style.background = '#2563eb';
-    toggleText.innerText = 'حساب کاربری ندارید؟';
-    toggleBtn.innerText = 'ثبت‌نام سریع';
-  }
-}
-
-function handleAuth() {
-  const phone = document.getElementById('authPhone').value.trim();
-  const pass = document.getElementById('authPass').value.trim();
-
-  if (!phone || phone.length < 11) {
-    alert('لطفاً شماره موبایل ۱۱ رقمی معتبر وارد کنید.');
-    return;
-  }
-  if (!pass || pass.length < 4) {
-    alert('رمز عبور باید حداقل ۴ رقم یا حرف باشد.');
-    return;
+  function openLoginModal() {
+    var modal = document.getElementById('loginModal');
+    if (modal) modal.style.display = 'flex';
   }
 
-  let users = JSON.parse(localStorage.getItem('mo_users') || '{}');
+  function closeLoginModal() {
+    var modal = document.getElementById('loginModal');
+    if (modal) modal.style.display = 'none';
+  }
 
-  if (isRegisterMode) {
-    if (users[phone]) {
-      alert('این شماره قبلاً ثبت‌نام شده است! لطفاً وارد شوید.');
-      toggleAuthMode();
+  function toggleAuthMode() {
+    isRegisterMode = !isRegisterMode;
+    var title = document.getElementById('modalTitle');
+    var sub = document.getElementById('modalSub');
+    var submitBtn = document.getElementById('authSubmitBtn');
+    var toggleText = document.getElementById('toggleText');
+    var toggleBtn = document.getElementById('toggleBtn');
+
+    if (isRegisterMode) {
+      if (title) title.innerText = 'ثبت‌نام سریع در ماشین آنلاین';
+      if (sub) sub.innerText = 'یک رمز دلخواه برای حساب خود انتخاب کنید';
+      if (submitBtn) {
+        submitBtn.innerText = 'ایجاد حساب و ورود';
+        submitBtn.style.background = '#10b981';
+      }
+      if (toggleText) toggleText.innerText = 'قبلاً ثبت‌نام کرده‌اید؟';
+      if (toggleBtn) toggleBtn.innerText = 'ورود به حساب';
+    } else {
+      if (title) title.innerText = 'ورود به حساب کاربری';
+      if (sub) sub.innerText = 'شماره موبایل و رمز عبور خود را وارد کنید';
+      if (submitBtn) {
+        submitBtn.innerText = 'ورود';
+        submitBtn.style.background = '#2563eb';
+      }
+      if (toggleText) toggleText.innerText = 'حساب کاربری ندارید؟';
+      if (toggleBtn) toggleBtn.innerText = 'ثبت‌نام سریع';
+    }
+  }
+
+  function handleAuth() {
+    var phoneInput = document.getElementById('authPhone');
+    var passInput = document.getElementById('authPass');
+    if (!phoneInput || !passInput) return;
+
+    var phone = phoneInput.value.trim();
+    var pass = passInput.value.trim();
+
+    if (!phone || phone.length < 11) {
+      alert('لطفاً شماره موبایل ۱۱ رقمی معتبر وارد کنید.');
       return;
     }
-    users[phone] 
-       <div class="header-actions">
-        <button type="button" class="btn-outline-white" onclick="openLoginModal()">ورود / ثبت‌نام</button>
-        <button type="button" class="btn-gold" onclick="goToSubmitAd()" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-          ثبت آگهی خودرو
-        </button>
-      </div>
+    if (!pass || pass.length < 4) {
+      alert('رمز عبور باید حداقل ۴ رقم یا حرف باشد.');
+      return;
+    }
 
-      <script>
+    var users = JSON.parse(localStorage.getItem('mo_users') || '{}');
+
+    if (isRegisterMode) {
+      if (users[phone]) {
+        alert('این شماره قبلاً ثبت‌نام شده است! لطفاً وارد شوید.');
+        toggleAuthMode();
+        return;
+      }
+      users[phone] = pass;
+      localStorage.setItem('mo_users', JSON.stringify(users));
+      localStorage.setItem('mo_currentUser', phone);
+      alert('ثبت‌نام با موفقیت انجام شد و وارد شدید.');
+      closeLoginModal();
+      updateUserUI();
+    } else {
+      if (!users[phone] || users[phone] !== pass) {
+        alert('شماره موبایل یا رمز عبور اشتباه است. اگر ثبت‌نام نکرده‌اید، روی «ثبت‌نام سریع» بزنید.');
+        return;
+      }
+      localStorage.setItem('mo_currentUser', phone);
+      alert('با موفقیت وارد حساب خود شدید.');
+      closeLoginModal();
+      updateUserUI();
+    }
+  }
+
+  function updateUserUI() {
+    var user = localStorage.getItem('mo_currentUser');
+    var btn = document.querySelector('.header-actions .btn-outline-white');
+    if (user && btn) {
+      btn.innerText = 'کاربر: ' + user.substring(0, 4) + '***' + user.substring(user.length - 3);
+      btn.onclick = function() {
+        if (confirm('آیا می‌خواهید از حساب کاربری خارج شوید؟')) {
+          localStorage.removeItem('mo_currentUser');
+          location.reload();
+        }
+      };
+    }
+  }
+
+  // دکمه ثبت آگهی خودرو در هدر
+  function goToSubmitAd() {
+    var user = localStorage.getItem('mo_currentUser');
+    if (!user) {
+      alert('برای ثبت آگهی ابتدا وارد حساب کاربری خود شوید.');
+      openLoginModal();
+      return;
+    }
+    var target = document.getElementById('ad-submit-form') || document.querySelector('form') || document.querySelector('.ad-form');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // انتخاب و کلیک روی پکیج‌ها
+  function selectPlan(planName) {
+    var user = localStorage.getItem('mo_currentUser');
+    if (!user) {
+      alert('برای انتخاب پکیج ابتدا وارد حساب کاربری خود شوید.');
+      openLoginModal();
+      return;
+    }
+    localStorage.setItem('selected_car_plan', planName);
+    var target = document.getElementById('ad-submit-form') || document.querySelector('form') || document.querySelector('.ad-form');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // بررسی وضعیت ورود هنگام بارگذاری صفحه
+  window.addEventListener('DOMContentLoaded', function() {
+    updateUserUI();
+  });
+</script>
