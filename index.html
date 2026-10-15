@@ -1925,34 +1925,30 @@
   </main>
 
   <!-- ==================== مودال ورود / ثبت‌نام با شماره تلفن ==================== -->
+
+  <!-- ==================== مودال ورود / ثبت‌نام با رمز عبور دلخواه (بدون پیامک) ==================== -->
   <div id="login-modal" class="modal-backdrop">
     <div class="modal-dialog">
       <button class="modal-close" onclick="closeLoginModal()">&times;</button>
-      <h3 style="font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">ورود به حساب بازار خودرو</h3>
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">ورود / ثبت‌نام در ماشین آنلاین</h3>
       <p style="font-size: 13px; color: var(--gray-600); margin-bottom: 18px;">
-        برای ثبت آگهی، مدیریت پیام‌ها و پیگیری آگهی‌های موردعلاقه شماره خود را وارد کنید.
+        برای ورود یا ایجاد حساب کاربری، شماره همراه و رمز عبور دلخواه خود را وارد کنید.
       </p>
 
-      <form id="otp-form" onsubmit="event.preventDefault(); handleOtpSubmit();">
-        <div id="otp-step-phone">
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label class="form-label">شماره همراه</label>
-            <input type="tel" id="user-phone" class="form-input" placeholder="۰۹۱۲۳۴۵۶۷۸۹" required />
-          </div>
-          <button type="submit" class="btn-gold" style="width: 100%; justify-content: center; padding: 12px;">
-            دریافت کد تایید پیامکی (OTP)
-          </button>
+      <form id="auth-form" onsubmit="event.preventDefault(); handleUserAuth();">
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label class="form-label">شماره همراه</label>
+          <input type="tel" id="user-phone" class="form-input" placeholder="۰۹۱۲۳۴۵۶۷۸۹" required dir="ltr" />
         </div>
 
-        <div id="otp-step-code" style="display: none;">
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label class="form-label">کد ۴ رقمی ارسال شده به گوشی شما</label>
-            <input type="text" id="otp-input" class="form-input" placeholder="مثال: 5821" maxlength="5" />
-          </div>
-          <button type="button" class="btn-gold" style="width: 100%; justify-content: center; padding: 12px;" onclick="verifyOtp()">
-            تایید و ورود به سامانه
-          </button>
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label class="form-label">رمز عبور دلخواه</label>
+          <input type="password" id="user-password" class="form-input" placeholder="رمز عبور خود را وارد کنید" required />
         </div>
+
+        <button type="submit" class="btn-gold" style="width: 100%; justify-content: center; padding: 12px;">
+          ورود / ثبت‌نام
+        </button>
       </form>
     </div>
   </div>
