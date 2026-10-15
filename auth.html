@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>احراز هویت و ورود | ماشین آنلاین</title>
+  <title>ورود و ثبت‌نام | ماشین آنلاین</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
   <style>
     :root {
@@ -48,11 +48,11 @@
 
     .brand-header {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .brand-header h1 {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 800;
       color: var(--primary);
       margin-bottom: 6px;
@@ -63,17 +63,38 @@
       color: var(--text-muted);
     }
 
-    .step-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 8px;
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 24px;
+      gap: 10px;
     }
 
-    .step-desc {
-      font-size: 13px;
+    .tab-btn {
+      flex: 1;
+      padding: 10px 0;
+      background: none;
+      border: none;
+      font-size: 15px;
+      font-weight: 700;
       color: var(--text-muted);
-      margin-bottom: 20px;
-      line-height: 1.6;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--primary);
     }
 
     .form-group {
@@ -104,32 +125,6 @@
       box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
     }
 
-    /* باکس کدهای ۴ رقمی OTP */
-    .otp-inputs {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      direction: ltr;
-      margin-bottom: 20px;
-    }
-
-    .otp-inputs input {
-      width: 52px;
-      height: 52px;
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      outline: none;
-      transition: border 0.2s;
-    }
-
-    .otp-inputs input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
-    }
-
     .btn {
       width: 100%;
       padding: 13px;
@@ -141,65 +136,38 @@
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
+      margin-top: 8px;
     }
 
     .btn:hover {
       background: var(--primary-hover);
     }
 
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .timer-wrap {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .resend-btn {
-      background: none;
-      border: none;
-      color: var(--primary);
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 13px;
-    }
-
-    .resend-btn:disabled {
-      color: var(--text-muted);
-      cursor: not-allowed;
-    }
-
     .back-action {
-      display: inline-block;
-      margin-top: 15px;
+      display: block;
+      text-align: center;
+      margin-top: 20px;
       font-size: 13px;
       color: var(--text-muted);
       text-decoration: none;
       cursor: pointer;
     }
 
-    .error-msg {
-      color: var(--danger);
-      font-size: 12px;
-      margin-top: 6px;
+    .back-action:hover {
+      color: var(--primary);
+    }
+
+    .tab-content {
       display: none;
     }
 
-    .step-section {
-      display: none;
-    }
-
-    .step-section.active {
+    .tab-content.active {
       display: block;
-      animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.25s ease-in-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(4px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
@@ -209,174 +177,139 @@
 <div class="auth-container">
   <div class="brand-header">
     <h1>ماشین آنلاین</h1>
-    <p>سامانه جامع ثبت و خرید خودرو</p>
+    <p>ورود و عضویت در سامانه خودرو</p>
   </div>
 
-  <!-- مرحله ۱: دریافت شماره موبایل -->
-  <section id="step-mobile" class="step-section active">
-    <div class="step-title">ورود یا ثبت‌نام</div>
-    <div class="step-desc">شماره موبایل خود را وارد کنید تا کد تأیید ارسال شود.</div>
-    
+  <!-- تب‌های انتخاب ورود / ثبت‌نام -->
+  <div class="tabs">
+    <button type="button" class="tab-btn active" onclick="switchAuthTab('login')">ورود به حساب</button>
+    <button type="button" class="tab-btn" onclick="switchAuthTab('register')">ثبت‌نام جدید</button>
+  </div>
+
+  <!-- فرم ۱: ورود -->
+  <form id="login-form" class="tab-content active" onsubmit="event.preventDefault(); handleLogin();">
     <div class="form-group">
-      <label for="mobile-input">شماره موبایل</label>
-      <input type="tel" id="mobile-input" class="form-control" placeholder="09123456789" maxlength="11">
-      <div id="mobile-error" class="error-msg">لطفاً شماره موبایل ۱۱ رقمی معتبر وارد کنید.</div>
+      <label for="login-mobile">شماره موبایل</label>
+      <input type="tel" id="login-mobile" class="form-control" placeholder="09123456789" maxlength="11" required>
     </div>
-
-    <button id="send-otp-btn" class="btn" onclick="handleSendOtp()">دریافت کد تأیید</button>
-  </section>
-
-  <!-- مرحله ۲: وارد کردن کد تأیید (OTP) -->
-  <section id="step-otp" class="step-section">
-    <div class="step-title">تأیید شماره تماس</div>
-    <div class="step-desc">کد پیامک‌شده به شماره <b id="display-mobile"></b> را وارد کنید:</div>
-
-    <div class="otp-inputs">
-      <input type="text" maxlength="1" class="otp-digit">
-      <input type="text" maxlength="1" class="otp-digit">
-      <input type="text" maxlength="1" class="otp-digit">
-      <input type="text" maxlength="1" class="otp-digit">
-    </div>
-
-    <button id="verify-otp-btn" class="btn" onclick="handleVerifyOtp()">تأیید و ادامه</button>
-
-    <div class="timer-wrap">
-      <span id="timer-text">ارسال مجدد کد پس از <span id="timer-count">01:59</span></span>
-      <button id="resend-btn" class="resend-btn" style="display:none;" onclick="handleSendOtp()">ارسال مجدد کد</button>
-    </div>
-
-    <div style="text-align: center;">
-      <a class="back-action" onclick="goToStep('step-mobile')">← ویرایش شماره موبایل</a>
-    </div>
-  </section>
-
-  <!-- مرحله ۳: احراز هویت شاهکار (کد ملی) جهت فعال‌سازی ثبت آگهی -->
-  <section id="step-national" class="step-section">
-    <div class="step-title">احراز هویت فروشنده (سامانه شاهکار)</div>
-    <div class="step-desc">برای امنیت معاملات، کدملی باید متعلق به صاحب شماره موبایل باشد.</div>
 
     <div class="form-group">
-      <label for="national-code">کد ملی</label>
-      <input type="text" id="national-code" class="form-control" placeholder="۱۰ رقم بدون خط تیره" maxlength="10">
-      <div id="national-error" class="error-msg">کد ملی وارد شده نامعتبر است.</div>
+      <label for="login-pass">رمز عبور</label>
+      <input type="password" id="login-pass" class="form-control" placeholder="رمز عبور خود را وارد کنید" required>
     </div>
 
-    <button class="btn" onclick="handleVerifyIdentity()">تأیید نهایی و ورود به پنل</button>
-  </section>
+    <button type="submit" class="btn">ورود به حساب کاربری</button>
+  </form>
+
+  <!-- فرم ۲: ثبت‌نام -->
+  <form id="register-form" class="tab-content" onsubmit="event.preventDefault(); handleRegister();">
+    <div class="form-group">
+      <label for="reg-mobile">شماره موبایل</label>
+      <input type="tel" id="reg-mobile" class="form-control" placeholder="09123456789" maxlength="11" required>
+    </div>
+
+    <div class="form-group">
+      <label for="reg-pass">تعیین رمز عبور دلخواه</label>
+      <input type="password" id="reg-pass" class="form-control" placeholder="حداقل ۴ کاراکتر" minlength="4" required>
+    </div>
+
+    <div class="form-group">
+      <label for="reg-pass-confirm">تکرار رمز عبور</label>
+      <input type="password" id="reg-pass-confirm" class="form-control" placeholder="تکرار رمز عبور" minlength="4" required>
+    </div>
+
+    <button type="submit" class="btn">ثبت‌نام و ایجاد حساب</button>
+  </form>
+
+  <a href="index.html" class="back-action">بازگشت به صفحه اصلی سایت ←</a>
 </div>
 
 <script>
-  let timerInterval;
+  function switchAuthTab(type) {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
 
-  function goToStep(stepId) {
-    document.querySelectorAll('.step-section').forEach(el => el.classList.remove('active'));
-    document.getElementById(stepId).classList.add('active');
-  }
-
-  // اعتبارسنجی شماره موبایل ایران
-  function isValidMobile(mobile) {
-    return /^09[0-9]{9}$/.test(mobile);
-  }
-
-  // اعتبارسنجی الگوریتم کد ملی ایران
-  function isValidNationalCode(code) {
-    if (!/^\d{10}$/.test(code)) return false;
-    const check = parseInt(code[9]);
-    let sum = 0;
-    for (let i = 0; i < 9; i++) {
-      sum += parseInt(code[i]) * (10 - i);
+    if (type === 'login') {
+      tabs[0].classList.add('active');
+      tabs[1].classList.remove('active');
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+    } else {
+      tabs[1].classList.add('active');
+      tabs[0].classList.remove('active');
+      registerForm.classList.add('active');
+      loginForm.classList.remove('active');
     }
-    const rem = sum % 11;
-    return (rem < 2 && check === rem) || (rem >= 2 && check === 11 - rem);
   }
 
-  // تایمر ۲ دقیقه‌ای
-  function startOtpTimer() {
-    clearInterval(timerInterval);
-    let secondsLeft = 119;
-    const countDisplay = document.getElementById('timer-count');
-    const timerText = document.getElementById('timer-text');
-    const resendBtn = document.getElementById('resend-btn');
+  function handleRegister() {
+    const mobile = document.getElementById('reg-mobile').value.trim();
+    const pass = document.getElementById('reg-pass').value.trim();
+    const passConfirm = document.getElementById('reg-pass-confirm').value.trim();
 
-    timerText.style.display = 'inline';
-    resendBtn.style.display = 'none';
-
-    timerInterval = setInterval(() => {
-      const min = Math.floor(secondsLeft / 60).toString().padStart(2, '0');
-      const sec = (secondsLeft % 60).toString().padStart(2, '0');
-      countDisplay.textContent = `${min}:${sec}`;
-
-      if (secondsLeft <= 0) {
-        clearInterval(timerInterval);
-        timerText.style.display = 'none';
-        resendBtn.style.display = 'inline-block';
-      }
-      secondsLeft--;
-    }, 1000);
-  }
-
-  function handleSendOtp() {
-    const mobile = document.getElementById('mobile-input').value.trim();
-    const errorEl = document.getElementById('mobile-error');
-
-    if (!isValidMobile(mobile)) {
-      errorEl.style.display = 'block';
-      return;
-    }
-    errorEl.style.display = 'none';
-
-    // نمایش شماره در مرحله بعدی و شروع تایمر
-    document.getElementById('display-mobile').textContent = mobile;
-    goToStep('step-otp');
-    startOtpTimer();
-
-    // اینجا فراخوانی API ارسال پیامک شما (مثلاً کاوه‌نگار، فراز اس‌ام‌اس، ...) قرار می‌گیرد
-    console.log("درخواست ارسال OTP به:", mobile);
-  }
-
-  // رفتار جعبه‌های OTP ۴ رقمی (پرش خودکار فوکوس)
-  const otpDigits = document.querySelectorAll('.otp-digit');
-  otpDigits.forEach((input, index) => {
-    input.addEventListener('input', (e) => {
-      if (e.target.value.length === 1 && index < otpDigits.length - 1) {
-        otpDigits[index + 1].focus();
-      }
-    });
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Backspace' && !e.target.value && index > 0) {
-        otpDigits[index - 1].focus();
-      }
-    });
-  });
-
-  function handleVerifyOtp() {
-    let enteredCode = "";
-    otpDigits.forEach(input => enteredCode += input.value);
-
-    if (enteredCode.length < 4) {
-      alert("لطفاً کد تأیید ۴ رقمی را کامل وارد کنید.");
+    if (!/^09[0-9]{9}$/.test(mobile)) {
+      alert('لطفاً یک شماره موبایل معتبر ۱۱ رقمی وارد کنید.');
       return;
     }
 
-    // هدایت به مرحله تطبیق کد ملی
-    goToStep('step-national');
-  }
-
-  function handleVerifyIdentity() {
-    const code = document.getElementById('national-code').value.trim();
-    const errorEl = document.getElementById('national-error');
-
-    if (!isValidNationalCode(code)) {
-      errorEl.style.display = 'block';
+    if (pass.length < 4) {
+      alert('رمز عبور باید حداقل ۴ کاراکتر باشد.');
       return;
     }
-    errorEl.style.display = 'none';
 
-    // در این بخش داده‌ها به بک‌اند ارسال و با وب‌سرویس شاهکار تطبیق داده می‌شوند
-    alert("احراز هویت با موفقیت انجام شد! در حال انتقال به پنل کاربری...");
+    if (pass !== passConfirm) {
+      alert('رمز عبور و تکرار آن یکسان نیستند!');
+      return;
+    }
+
+    let users = JSON.parse(localStorage.getItem('registered_users')) || {};
+
+    if (users[mobile]) {
+      alert('این شماره موبایل قبلاً ثبت‌نام شده است! لطفاً وارد شوید.');
+      switchAuthTab('login');
+      document.getElementById('login-mobile').value = mobile;
+      return;
+    }
+
+    users[mobile] = pass;
+    localStorage.setItem('registered_users', JSON.stringify(users));
+    localStorage.setItem('userLoggedIn', 'true');
+    localStorage.setItem('currentUserPhone', mobile);
+
+    alert('ثبت‌نام شما با موفقیت انجام شد!');
     window.location.href = "index.html";
+  }
+
+  function handleLogin() {
+    const mobile = document.getElementById('login-mobile').value.trim();
+    const pass = document.getElementById('login-pass').value.trim();
+
+    if (!mobile || !pass) {
+      alert('لطفاً شماره موبایل و رمز عبور را وارد کنید.');
+      return;
+    }
+
+    let users = JSON.parse(localStorage.getItem('registered_users')) || {};
+
+    if (!users[mobile]) {
+      alert('حسابی با این شماره یافت نشد! لطفاً ابتدا ثبت‌نام کنید.');
+      switchAuthTab('register');
+      document.getElementById('reg-mobile').value = mobile;
+      return;
+    }
+
+    if (users[mobile] === pass) {
+      localStorage.setItem('userLoggedIn', 'true');
+      localStorage.setItem('currentUserPhone', mobile);
+      alert('خوش آمدید! با موفقیت وارد شدید.');
+      window.location.href = "index.html";
+    } else {
+      alert('رمز عبور وارد شده اشتباه است!');
+    }
   }
 </script>
 
 </body>
 </html>
+
