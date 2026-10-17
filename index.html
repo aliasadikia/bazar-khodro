@@ -1584,36 +1584,33 @@
   <main id="page-packages" class="page-section">
     <div class="page-title-banner">
       <div class="container">
-        <!-- H1 حاوی بازار خودرو -->
         <h1>بازار خودرو | تعرفه پکیج‌های تخصصی ثبت آگهی و فروش</h1>
         <p>بدون هیچ پکیج رایگان — پکیج‌ها از ۱,۲۵۰,۰۰۰ تومان آغاز می‌شوند و تضمین‌کننده خریدار واقعی هستند.</p>
       </div>
     </div>
 
-    <!-- پکیج رایگان (هدیه ثبت‌نام) -->
+    <!-- پکیج رایگان -->
     <div class="container" style="margin-bottom: 25px;">
-      <div class="pricing-card" style="border: 2px dashed #10b981; position: relative; max-width: 500px; margin: 0 auto 30px auto; background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center;">
+      <div class="pricing-card" style="border: 2px dashed #10b981; position: relative; max-width: 500px; margin: 0 auto 30px auto; background: #fff; padding: 24px; border-radius: 12px; text-align: center;">
         <span style="position: absolute; top: -12px; right: 20px; background: #10b981; color: #fff; padding: 2px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">هدیه ثبت‌نام</span>
         <div class="card-header">
-          <h3 style="color: #10b981; margin-top: 5px;">پکیج رایگان</h3>
-          <div class="price" style="font-size: 26px; font-weight: bold; margin: 15px 0; color: #111827;">رایگان <span style="font-size: 14px; color: #6b7280;">(۰ تومان)</span></div>
+          <h3 style="color: #10b981;">پکیج رایگان</h3>
+          <div class="price" style="font-size: 26px; font-weight: bold; margin: 15px 0;">رایگان (۰ تومان)</div>
         </div>
-        <ul style="list-style: none; padding: 0; margin: 20px 0; line-height: 2; font-size: 14px; color: #4b5563; text-align: right;">
+        <ul style="list-style: none; padding: 0; margin: 20px 0; line-height: 2; font-size: 14px; text-align: right;">
           <li>✔ ثبت ۱ آگهی رایگان خودرو</li>
           <li>✔ نمایش در بخش آگهی‌های روز</li>
           <li>✔ اعتبار آگهی: ۳۰ روز</li>
-          <li>✔ بدون نیاز به پرداخت و درگاه</li>
         </ul>
-        <button type="button" onclick="selectFreePlan(event)" style="width: 100%; background: #10b981; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: all 0.2s ease;">
+        <button type="button" id="btn-free" style="width: 100%; background: #10b981; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer;">
           ثبت آگهی رایگان
         </button>
       </div>
     </div>
 
     <div class="container">
-      <!-- کارت‌های قیمت پکیج‌ها -->
       <div class="pricing-grid">
-        <!-- پکیج برنزی: ۱,۲۵۰,۰۰۰ تومان -->
+        <!-- پکیج برنزی -->
         <div class="pricing-card">
           <div class="pkg-title">پکیج برنزی</div>
           <div class="pkg-desc">مناسب فروش خودروهای اقتصادی و معاملات شخصی استاندارد</div>
@@ -1622,29 +1619,16 @@
             <span class="pkg-price-currency">تومان</span>
           </div>
           <ul class="pkg-features">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              نمایش رسمی ۳۰ روزه در سراسر سایت
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              امکان آپلود تا ۵ تصویر باکیفیت
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              چکاپ اولیه اصالت مدارک و سند
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              پشتیبانی چت آنلاین ۷ روز هفته
-            </li>
+            <li>نمایش رسمی ۳۰ روزه در سراسر سایت</li>
+            <li>امکان آپلود تا ۵ تصویر باکیفیت</li>
+            <li>پشتیبانی چت آنلاین ۷ روز هفته</li>
           </ul>
-          <button type="button" class="pkg-choose-btn btn-pkg-default" onclick="selectPackage('برنزی', 1250000, event)">
+          <button type="button" id="btn-bronze" class="pkg-choose-btn btn-pkg-default" style="cursor: pointer;">
             انتخاب پکیج برنزی
           </button>
         </div>
 
-        <!-- پکیج نقره‌ای: ۲,۴۵۰,۰۰۰ تومان -->
+        <!-- پکیج نقره‌ای -->
         <div class="pricing-card featured">
           <div class="pkg-popular-tag">پرفروش‌ترین پکیج</div>
           <div class="pkg-title">پکیج نقره‌ای ویژه</div>
@@ -1654,33 +1638,16 @@
             <span class="pkg-price-currency">تومان</span>
           </div>
           <ul class="pkg-features">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              نمایش ۴۵ روزه با تگ تایید شده VIP
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              تصویربرداری حرفه‌ای اختصاصی در محل
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              ۲ بار نردبان خودکار در صدر آگهی‌ها
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              ارسال پیامک اطلاع‌رسانی به خریداران فعال
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              آپلود نامحدود عکس و فیلم خودرو
-            </li>
+            <li>نمایش ۴۵ روزه با تگ تایید شده VIP</li>
+            <li>۲ بار نردبان خودکار در صدر آگهی‌ها</li>
+            <li>ارسال پیامک اطلاع‌رسانی به خریداران فعال</li>
           </ul>
-          <button type="button" class="pkg-choose-btn btn-pkg-featured" onclick="selectPackage('نقره‌ای ویژه', 2450000, event)">
+          <button type="button" id="btn-silver" class="pkg-choose-btn btn-pkg-featured" style="cursor: pointer;">
             انتخاب پکیج نقره‌ای
           </button>
         </div>
 
-        <!-- پکیج طلایی VIP: ۳,۹۰۰,۰۰۰ تومان -->
+        <!-- پکیج طلایی -->
         <div class="pricing-card">
           <div class="pkg-title">پکیج طلایی VIP لوکس</div>
           <div class="pkg-desc">مدیریت صفر تا صد معامله توسط مشاور ارشد بازار خودرو</div>
@@ -1689,30 +1656,18 @@
             <span class="pkg-price-currency">تومان</span>
           </div>
           <ul class="pkg-features">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              نمایش در اسلایدر ویترین صفحه اول
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              پشتیبانی VIP و تضمین سلامت معامله با بیمه
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              نردبان روزانه و انتشار در شبکه‌های اجتماعی
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              تنظیم مبایعه‌نامه رسمی با نظارت مشاور حقوقی
-            </li>
+            <li>نمایش در اسلایدر ویترین صفحه اول</li>
+            <li>پشتیبانی VIP و تضمین سلامت معامله با بیمه</li>
+            <li>تنظیم مبایعه‌نامه رسمی با نظارت مشاور حقوقی</li>
           </ul>
-          <button type="button" class="pkg-choose-btn btn-pkg-default" onclick="selectPackage('طلایی VIP لوکس', 3900000, event)">
+          <button type="button" id="btn-gold" class="pkg-choose-btn btn-pkg-default" style="cursor: pointer;">
             انتخاب پکیج طلایی VIP
           </button>
         </div>
       </div>
     </div>
   </main>
+
 
   <!-- اسکریپت عملکرد دکمه‌ها و اتصال به ثبت آگهی -->
   <script>
