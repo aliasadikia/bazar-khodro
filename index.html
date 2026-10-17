@@ -1669,6 +1669,7 @@
   </main>
 
   <!-- اسکریپت عملکرد دکمه‌ها و اتصال به ثبت آگهی -->
+ 
   <script>
     window.selectedCarPlan = {
       name: '',
@@ -1676,7 +1677,6 @@
       isFree: false
     };
 
-    // تابع انتخاب پکیج‌های پولی
     function selectPackage(planName, price) {
       window.selectedCarPlan = {
         name: planName,
@@ -1684,19 +1684,16 @@
         isFree: false
       };
 
-      console.log('پکیج انتخاب شد:', planName, price);
-
-      // ۱. افکت بصری و هایلایت کارت‌ها
-      document.querySelectorAll('.pricing-card').forEach(el => {
+      // هایلایت کارت انتخاب شده
+      document.querySelectorAll('.pricing-card').forEach(function(el) {
         el.style.transform = 'none';
         el.style.boxShadow = '';
         el.style.borderColor = '';
       });
 
-      // پیدا کردن دکمه کلیک شده و کارت والد
-      const clickedBtn = window.event ? window.event.target : null;
+      var clickedBtn = window.event ? window.event.target : null;
       if (clickedBtn) {
-        const card = clickedBtn.closest('.pricing-card');
+        var card = clickedBtn.closest('.pricing-card');
         if (card) {
           card.style.transform = 'translateY(-6px)';
           card.style.boxShadow = '0 12px 25px rgba(37, 99, 235, 0.25)';
@@ -1704,14 +1701,13 @@
         }
       }
 
-      // ۲. به‌روزرسانی متن فاکتور/مرحله پرداخت
+      // به‌روزرسانی متن‌ها در فرم
       updatePlanUI(planName, Number(price).toLocaleString('fa-IR') + ' تومان');
 
-      // ۳. هدایت به بخش فرم
+      // هدایت صفحه به سمت فرم
       navigateToForm();
     }
 
-    // تابع انتخاب پکیج رایگان
     function selectFreePlan() {
       window.selectedCarPlan = {
         name: 'هدیه رایگان',
@@ -1719,26 +1715,22 @@
         isFree: true
       };
 
-      console.log('پکیج رایگان انتخاب شد');
-
       updatePlanUI('هدیه رایگان (۰ تومان)', 'رایگان');
       navigateToForm();
     }
 
-    // به‌روزرسانی بخش‌های مختلف صفحه
     function updatePlanUI(name, priceStr) {
-      const nameElements = document.querySelectorAll('.selected-plan-name, #selected-plan-title');
-      const priceElements = document.querySelectorAll('.selected-plan-price, #selected-plan-amount');
-      const hiddenInputs = document.querySelectorAll('input[name="selected_package"]');
+      var nameElements = document.querySelectorAll('.selected-plan-name, #selected-plan-title');
+      var priceElements = document.querySelectorAll('.selected-plan-price, #selected-plan-amount');
+      var hiddenInputs = document.querySelectorAll('input[name="selected_package"]');
 
-      nameElements.forEach(el => el.textContent = name);
-      priceElements.forEach(el => el.textContent = priceStr);
-      hiddenInputs.forEach(el => el.value = name);
+      nameElements.forEach(function(el) { el.textContent = name; });
+      priceElements.forEach(function(el) { el.textContent = priceStr; });
+      hiddenInputs.forEach(function(el) { el.value = name; });
     }
 
-    // اسکرول نرم و مطمئن به فرم
     function navigateToForm() {
-      const formElement = document.querySelector('form') || 
+      var formElement = document.querySelector('form') || 
                           document.getElementById('ad-form') || 
                           document.getElementById('form-section') ||
                           document.querySelector('.ad-create-container') ||
@@ -1747,12 +1739,10 @@
       if (formElement) {
         formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
-        // اگر هیچ کلاسی پیدا نشد، صفحه را ۶۰۰ پیکسل به سمت پایین فرم می‌برد
         window.scrollBy({ top: 600, behavior: 'smooth' });
       }
     }
   </script>
-
 
 
       <!-- فرم مرحله‌ای ثبت آگهی -->
