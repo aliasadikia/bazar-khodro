@@ -1,0 +1,23 @@
+name: Build WebView APK
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build APK
+        run: |
+          # این اسکریپت ساده از یک تمپلیت آنلاین استفاده می‌کند
+          # فقط کافیست آدرس سایتت را اینجا بنویسی
+          URL="https://aliasadikia.github.io/bazar-khodro/"
+          echo "Building app for $URL"
+          # در اینجا یک ابزار ساده برای تبدیل سایت به اپ اجرا می‌شود
+          curl -s https://raw.githubusercontent.com/daisuke-t/webview-android-builder/master/build.sh | bash -s -- "$URL" "ir.aliasadikia.mashinonline" "ماشین آنلاین"
+          
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release
+          path: output/*.apk
